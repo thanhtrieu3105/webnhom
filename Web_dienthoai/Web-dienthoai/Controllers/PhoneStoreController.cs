@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Dynamic;
@@ -62,6 +63,27 @@ namespace Web_dienthoai.Controllers
             var filter = listsp.Where(id => id.SanPham.MaTH == MaTH).ToList();
 
             return View(filter);
+        }
+
+        
+        
+        public ActionResult Details(string id)
+        {
+            var list = new List<ProductView>();
+
+            var phone = db.SanPhams.FirstOrDefault(s => s.MaSP== id);
+            var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == id);
+            var pic = db.HinhSPs.FirstOrDefault(s => s.MaSP == id);
+
+            var myview = new ProductView()
+            {
+                SanPham = phone,
+                ChiTietSP = detail,
+                HinhSP = pic
+            };
+
+
+            return View(myview);
         }
     }
 }

@@ -11,6 +11,6 @@ namespace Web_dienthoai.Models
 
         public HinhSP HinhSP { get; set; } 
 
-
+        public ChiTietSP ChiTietSP { get; set;}
     }
 }

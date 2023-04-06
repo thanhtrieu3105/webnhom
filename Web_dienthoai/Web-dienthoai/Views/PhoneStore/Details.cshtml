@@ -1,0 +1,29 @@
+﻿@using Web_dienthoai.Models;
+@model ProductView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
+
+<br />
+<h2 style="text-align:center;">CHI TIẾT SẢN PHẨM</h2>
+<br />
+<hr />
+
+<div class="row">
+    <div class="offset-md-1 col-md-4">
+        <img style="width:100%;" src="~/Images/Phones/@Model.HinhSP.MaHinh" alt=""/>
+    </div>
+    <div class="col-md-6 details">
+        <h3>@Model.SanPham.TenSP</h3>
+        <p style="text-align:justify">
+            <span style="font-weight:bold">Mô tả:</span> @Model.SanPham.MoTaSP
+        </p>
+        <p class="price">
+            Giá bán: <span style="color: red; font-size: 32px;">@Model.ChiTietSP.Gia VNĐ</span>
+        </p>
+    </div>
+</div>
