@@ -1,0 +1,71 @@
+﻿@model MVCbuoi4.Models.Products
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 70%;">
+    <h2 style="text-align: center">TẠO MỚI PRODUCT</h2>
+
+
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Products</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                Ten san pham
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NamePro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NamePro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Mo ta
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DecriptionPro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DecriptionPro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Category
+                <div class="col-md-10">
+                    @Html.DropDownList("Category", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Gia
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Hinh San Pham
+                <div class="col-md-10">
+                    <input type="file" name="ImagePro" />
+                    @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tao moi" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

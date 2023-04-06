@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "ThongTin";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<form action="/action_page.php" style="margin-left:10px;margin-right:10px;margin-bottom:5px">
+
+    <h2 style="text-align:center">Thông Tin Đăng Ký</h2>
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Tên:</label>
+        <input type="email" class="form-control" id="email" placeholder="nhập tên" name="email" style="margin:0,10px,0,10px">
+        <label for="pwd" class="form-label">Mật khẩu:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Nhập password" name="pswd" style="margin:0,10px,0,10px">
+    </div>
+    <label for="comment">Địa chỉ:</label>
+<textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+    <button type="submit" class="btn btn-primary">Gửi</button>
+</form>
