@@ -1,0 +1,172 @@
+﻿@using Web_dienthoai.Models;
+@model ProductView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
+<link rel="stylesheet" href="~/Content/Image.css" />
+
+<br />
+<h2 style="text-align:center; color: white">CHI TIẾT SẢN PHẨM</h2>
+<br />
+<hr />
+
+<div>
+
+    <div>
+        <img class="my-image-product" style="color: white; display: block; margin: auto;" src="~/Images/Phones/@Model.HinhSP.MaHinh" alt="" />
+    </div>
+
+    <hr /> <hr />
+    <div style="padding-left: 100px; padding-right: 100px;">
+        <h3 style="color: white; text-align: center; ">@Model.SanPham.TenSP</h3>
+        <p style="color: white; padding-left: 200px; padding-right: 200px; text-align: justify ">
+            <span style="color: white; font-weight: bold; text-align: center; ">Mô tả:</span> @Model.SanPham.MoTaSP
+        </p>
+        <hr />
+        <h4 style="color: white;">THÔNG SỐ KỸ THUẬT:</h4>
+
+
+
+        <table class="white-text">
+
+            <tr>
+                <td>Mã sản phẩm: </td>
+                <td>@Model.SanPham.MaSP</td>
+                <td>Công nghệ màn hình: </td>
+                <td>@Model.TSKTSP.CongNgheManHinh</td>
+            </tr>
+            <tr>
+                <td>Độ phân giải: </td>
+                <td>@Model.TSKTSP.DoPhanGiai</td>
+                <td>Độ rộng màn hình: </td>
+                <td>@Model.TSKTSP.ManHinhrong</td>
+            </tr>
+            <tr>
+                <td>Mặt kính cảm ứng: </td>
+                <td>@Model.TSKTSP.MatKinhCamUng</td>
+                <td>Độ phân giải Camera sau: </td>
+                <td>@Model.TSKTSP.DoPhanGiaiCamS</td>
+            </tr>
+            <tr>
+                <td>Chất lượng hình ảnh: </td>
+                <td>@Model.TSKTSP.QuayPhim</td>
+                <td>Flash: </td>
+                <td>@Model.TSKTSP.Flash</td>
+            </tr>
+            <tr>
+                <td>Tính năng Camera sau: </td>
+                <td>@Model.TSKTSP.TinhNangCamS</td>
+                <td>Độ phân giải Camera trước: </td>
+                <td>@Model.TSKTSP.DoPhanGiaiCamT</td>
+            </tr>
+            <tr>
+                <td>Tính năng Camera trước: </td>
+                <td>@Model.TSKTSP.TinhNangCamT</td>
+                <td>Hệ điều hành: </td>
+                <td>@Model.TSKTSP.HeDieuHanh</td>
+            </tr>
+            <tr>
+                <td>CPU: </td>
+                <td>@Model.TSKTSP.CPU</td>
+                <td>Tốc độ CPU: </td>
+                <td>@Model.TSKTSP.TocDoCPU</td>
+            </tr>
+            <tr>
+                <td>GPU: </td>
+                <td>@Model.TSKTSP.GPU</td>
+                <td>RAM: </td>
+                <td>@Model.TSKTSP.RAM</td>
+            </tr>
+            <tr>
+                <td>Dung lượng: </td>
+                <td>@Model.TSKTSP.DungLuong</td>
+                <td>Dung lượng con: </td>
+                <td>@Model.TSKTSP.DungLuongCon</td>
+            </tr>
+            <tr>
+                <td>Danh bạ: </td>
+                <td>@Model.TSKTSP.DanhBa</td>
+                <td>Mạng: </td>
+                <td>@Model.TSKTSP.Mang</td>
+            </tr>
+            <tr>
+                <td>Sim: </td>
+                <td>@Model.TSKTSP.Sim</td>
+                <td>Wifi: </td>
+                <td>@Model.TSKTSP.Wifi</td>
+            </tr>
+            <tr>
+                <td>GPS: </td>
+                <td>@Model.TSKTSP.GPS</td>
+                <td>Bluetooh: </td>
+                <td>@Model.TSKTSP.Bluetooth</td>
+            </tr>
+
+            <tr>
+                <td>Cổng sạc: </td>
+                <td>@Model.TSKTSP.Sac</td>
+                <td>Jack: </td>
+                <td>@Model.TSKTSP.Jack</td>
+            </tr>
+            <tr>
+                <td>Kết nối khác: </td>
+                <td>@Model.TSKTSP.KetNoiKhac</td>
+                <td>Dung lượng pin: </td>
+                <td>@Model.TSKTSP.DungLuongPin</td>
+            </tr>
+            <tr>
+                <td>Loại pin: </td>
+                <td>@Model.TSKTSP.LoaiPin</td>
+                <td>Sạc tối đa: </td>
+                <td>@Model.TSKTSP.SacToiDa</td>
+            </tr>
+            <tr>
+                <td>Công nghệ Pin: </td>
+                <td>@Model.TSKTSP.CongNghePin</td>
+                <td>Bảo mật nâng cao: </td>
+                <td>@Model.TSKTSP.BaoMatNC</td>
+            </tr>
+
+            <tr>
+                <td>Tính năng danh bạ: </td>
+                <td>@Model.TSKTSP.TinhNangDB</td>
+                <td>Kháng nước bụi: </td>
+                <td>@Model.TSKTSP.KhangNuocBui</td>
+            </tr>
+            <tr>
+                <td>Xem phim: </td>
+                <td>@Model.TSKTSP.XemPhim</td>
+                <td>Nghe nhạc: </td>
+                <td> @Model.TSKTSP.NgheNhac</td>
+            </tr>
+            <tr>
+                <td>Thiết kế: </td>
+                <td>@Model.TSKTSP.ThietKe</td>
+                <td>Chất liệu: </td>
+                <td>@Model.TSKTSP.ChatLieu</td>
+            </tr>
+            <tr>
+                <td>Kích thước: </td>
+                <td>@Model.TSKTSP.KichThuoc</td>
+                <td>Thời điểm ra mắt: </td>
+                <td>@Model.TSKTSP.ThoiDiemRaMat</td>
+            </tr>
+
+        </table>
+
+        <hr /><hr />
+
+    </div>
+
+    <p class="price" style="text-align: center;">
+        <span style="color: red; background-color: white; font-weight: bold;  font-size: 40px; border: 2px solid white; padding: 5px; padding-bottom: 10px; ">Giá bán: @Model.ChiTietSP.Gia VNĐ</span>
+    </p>
+
+    <hr /><hr />
+
+    <a class="btn btn-primary" style=" margin-left: 47%; padding:20px; margin-bottom:2%; font-weight:bold; justify-content: center; align-items: center;"  href="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.SanPham.MaSP })"> Đặt mua </a>
+</div>
