@@ -75,12 +75,14 @@ namespace Web_dienthoai.Controllers
             var phone = db.SanPhams.FirstOrDefault(s => s.MaSP == id);
             var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == id);
             var pic = db.HinhSPs.FirstOrDefault(s => s.MaSP == id);
+            var tskt = db.TSKTSPs.FirstOrDefault(s => s.MaSP == id);
 
             var myview = new ProductView()
             {
                 SanPham = phone,
                 ChiTietSP = detail,
-                HinhSP = pic
+                HinhSP = pic,
+                TSKTSP = tskt
             };
 
 

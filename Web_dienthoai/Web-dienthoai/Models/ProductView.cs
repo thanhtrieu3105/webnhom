@@ -12,5 +12,9 @@ namespace Web_dienthoai.Models
         public HinhSP HinhSP { get; set; } 
 
         public ChiTietSP ChiTietSP { get; set;}
+
+        public DungLuong DungLuong { get; set; }
+
+        public TSKTSP TSKTSP { get; set; }
     }
 }
