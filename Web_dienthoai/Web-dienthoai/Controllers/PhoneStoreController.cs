@@ -64,14 +64,15 @@ namespace Web_dienthoai.Controllers
 
             return View(filter);
         }
+        //<<<<<<< Updated upstream
 
-        
-        
+
+
         public ActionResult Details(string id)
         {
             var list = new List<ProductView>();
 
-            var phone = db.SanPhams.FirstOrDefault(s => s.MaSP== id);
+            var phone = db.SanPhams.FirstOrDefault(s => s.MaSP == id);
             var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == id);
             var pic = db.HinhSPs.FirstOrDefault(s => s.MaSP == id);
 
@@ -85,5 +86,6 @@ namespace Web_dienthoai.Controllers
 
             return View(myview);
         }
+      
     }
 }
