@@ -1,0 +1,80 @@
+﻿@using Web_dienthoai.Models;
+@model IEnumerable<ProductView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+@*Iphone*@
+<h3 class="align: text-center">iPhone</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "IP"))
+    {
+        <div class="col">
+            <div class="card">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">@item.SanPham.TenSP</h4>
+                    <p class="card-text">@item.SanPham.MaSP</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />
+<br />
+
+@*Samsung*@
+<h3 class="align: text-center">Samsung</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "SS"))
+    {
+        <div class="col">
+            <div class="card">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">@item.SanPham.TenSP</h4>
+                    <p class="card-text">@item.SanPham.MaSP</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<hr />
+<br />
+
+@*Xiaomi*@
+<h3 class="align: text-center">Huawei</h3>
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model.Where(id => id.SanPham.MaTH == "HW"))
+    {
+        <div class="col">
+            <div class="card">
+                <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
+                    <img class="card-img-top"
+                         src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">@item.SanPham.TenSP</h4>
+                    <p class="card-text">@item.SanPham.MaSP</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
