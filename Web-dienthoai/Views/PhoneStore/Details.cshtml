@@ -1,5 +1,5 @@
 ﻿@using Web_dienthoai.Models;
-@model ProductView
+@model DetailsView
 
 @{
     ViewBag.Title = "Details";
@@ -17,7 +17,12 @@
 <div>
 
     <div>
-        <img class="my-image-product" style="color: white; display: block; margin: auto;" src="~/Images/Phones/@Model.HinhSP.MaHinh" alt="" />
+        @foreach (var item in Model.HinhSP)
+        {
+            <img class="my-image-product" style="color: white; display: block; margin: auto;" src="~/Images/Phones/@item.MaHinh" alt="" />
+            <br />
+
+        }
     </div>
 
     <hr /> <hr />

@@ -84,5 +84,41 @@ namespace Web_dienthoai.Controllers
             ViewBag.TongTien = TinhTongTien();
             return PartialView();
         }
+
+
+        public ActionResult XoaMatHang(string MaSP)
+        {
+            List<MatHangMua> gioHang = LayGioHang();
+
+            //Lấy sp trong giỏ
+            var sanpham = gioHang.FirstOrDefault(id => id.MaSP == MaSP);
+            if(sanpham != null)
+            {
+                gioHang.RemoveAll(id => id.MaSP == MaSP);
+                return RedirectToAction("HienThiGioHang"); //Route về trang giỏ hàng
+            }
+            if(gioHang.Count == 0)
+            {
+                return RedirectToAction("Index", "PhoneStore"); //Route về trang chủ nếu không có gì
+            }
+            return RedirectToAction("HienThiGioHang");
+        }
+
+
+        public ActionResult CapNhatMatHang(string MaSP, int Soluong)
+        {
+            //Lấy giỏ hàng
+            List<MatHangMua> gioHang = LayGioHang();
+
+            //Lấy SP trong giỏ hàng
+            var sanpham = gioHang.FirstOrDefault(id => id.MaSP == MaSP);
+            if (sanpham != null)
+            {
+                //Cập nhật số lượng tương ứng
+                //Số lượng luôn >= 1
+                sanpham.SoLuong = Soluong;
+            }
+            return RedirectToAction("HienThiGioHang");
+        }
     }
 }

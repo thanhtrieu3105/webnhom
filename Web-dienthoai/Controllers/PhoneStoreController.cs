@@ -46,6 +46,7 @@ namespace Web_dienthoai.Controllers
         {
             var listsp = new List<ProductView>();
             var sanpham = db.SanPhams.ToList();
+            var brand = db.ThuongHieux.FirstOrDefault(id => id.MaTH == MaTH);
 
             foreach (var item in sanpham)
             {
@@ -54,11 +55,14 @@ namespace Web_dienthoai.Controllers
                 var myview = new ProductView()
                 {
                     SanPham = item,
-                    HinhSP = hinhSP
+                    HinhSP = hinhSP,
+                    ThuongHieu = brand
                 };
 
                 listsp.Add(myview);
             }
+
+            ViewBag.HangDT = brand.TenTH;
 
             var filter = listsp.Where(id => id.SanPham.MaTH == MaTH).ToList();
 
@@ -69,22 +73,28 @@ namespace Web_dienthoai.Controllers
         
         public ActionResult Details(string id)
         {
-            var list = new List<ProductView>();
+            var list = new List<DetailsView>();
 
             var phone = db.SanPhams.FirstOrDefault(s => s.MaSP== id);
             var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == id);
-            var pic = db.HinhSPs.FirstOrDefault(s => s.MaSP == id);
             var tskt = db.TSKTSPs.FirstOrDefault(s => s.MaSP == id);
 
-            var myview = new ProductView()
+            var pics = (from h in db.HinhSPs
+                        join s in db.SanPhams on h.MaSP equals s.MaSP
+                        where s.MaSP == id
+                        select h).ToList();
+
+            var myview = new DetailsView()
             {
                 SanPham = phone,
                 ChiTietSP = detail,
-                HinhSP = pic,
-                TSKTSP = tskt
+                TSKTSP = tskt,
+                HinhSP = pics
             };
 
 
+            list.Add(myview);
+            
             return View(myview);
         }
     }

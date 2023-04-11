@@ -39,7 +39,7 @@
             <PropertyRef Name="MaDH" />
           </Key>
           <Property Name="MaDH" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaKH" Type="char" MaxLength="4" />
+          <Property Name="MaKH" Type="int" />
           <Property Name="TenNguoiNhan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SDTnhan" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="DiaChiNhan" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -68,13 +68,15 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimaryKey" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="varchar" MaxLength="3" />
           <Property Name="NgaySinh" Type="smalldatetime" />
-          <Property Name="MK" Type="varchar" MaxLength="8" />
+          <Property Name="TenDN" Type="varchar" MaxLength="15" />
+          <Property Name="MK" Type="varchar" MaxLength="15" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="MaLoaiKH" Type="char" MaxLength="5" />
         </EntityType>
@@ -374,7 +376,7 @@
             <PropertyRef Name="MaDH" />
           </Key>
           <Property Name="MaDH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaKH" Type="Int32" />
           <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDTnhan" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DiaChiNhan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -407,13 +409,15 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrimaryKey" Type="String" MaxLength="6" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-          <Property Name="MK" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="TenDN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MK" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaLoaiKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__MaKH__5070F446" FromRole="KhachHang" ToRole="DonHang" />
@@ -753,11 +757,13 @@
             <EntityTypeMapping TypeName="QLDienThoaiModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="PrimaryKey" ColumnName="PrimaryKey" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="TenDN" ColumnName="TenDN" />
                 <ScalarProperty Name="MK" ColumnName="MK" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="MaLoaiKH" ColumnName="MaLoaiKH" />

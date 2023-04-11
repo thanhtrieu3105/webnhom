@@ -19,6 +19,9 @@
             <th>Số lượng</th>
             <th>Đơn giá</th>
             <th>Thành tiền</th>
+            <th>Chi tiết</th>
+            <th>Cập nhật</th>
+            <th>Xóa</th>
         </tr>
     </thead>
     <tbody>
@@ -28,12 +31,24 @@
                 <td>@item.MaSP</td>
                 <td>@item.TenSP</td>
 
-              @*  <td><img src="~/Images/@item.HinhSP" /></td>*@
-                <td> null </td>
-                <td>@item.SoLuong</td>
-                <td>@item.DonGia</td>
-                <td>@item.ThanhTien()</td>
+                <td><img src="~/Images/Phones/@item.HinhSP" style="width:25%; height:25%" /></td>
+                @*  <td> null </td>*@
+                @using (Html.BeginForm("CapNhatMatHang", "GioHang", new { MaSP = item.MaSP }))
+                {
+                    <td>
+                        <input type="number" min="1" value="@item.SoLuong" name="SoLuong" />
+                    </td>
+                    <td>@item.DonGia</td>
+                    <td>@item.ThanhTien()</td>
+                    <td>@Html.ActionLink("Chi tiết", "Details", "PhoneStore", new { id = item.MaSP }, new { @class = "btn btn-success" })</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </td>
+
+                }
+                <td>@Html.ActionLink("Xóa sản phẩm", "XoaMatHang", "GioHang", new { MaSP = item.MaSP }, new { @class = "btn btn-danger" })</td>
             </tr>
+                
         }
         <tr style="font-weight:bold; text-align:right; color:red;">
             <td colspan="5">Tổng số lượng: @ViewBag.TongSL</td>

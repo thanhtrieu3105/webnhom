@@ -20,12 +20,14 @@ namespace Web_dienthoai.Models
             this.DonHangs = new HashSet<DonHang>();
         }
     
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
+        public string PrimaryKey { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
+        public string TenDN { get; set; }
         public string MK { get; set; }
         public string Email { get; set; }
         public string MaLoaiKH { get; set; }
