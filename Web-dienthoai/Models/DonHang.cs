@@ -17,11 +17,11 @@ namespace Web_dienthoai.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DonHang()
         {
-            this.ChiTietDHs = new HashSet<ChiTietDH>();
+            this.ChiTietDH = new HashSet<ChiTietDH>();
         }
     
         public string MaDH { get; set; }
-        public Nullable<int> MaKH { get; set; }
+        public string MaKH { get; set; }
         public string TenNguoiNhan { get; set; }
         public string SDTnhan { get; set; }
         public string DiaChiNhan { get; set; }
@@ -33,7 +33,7 @@ namespace Web_dienthoai.Models
         public Nullable<int> TongTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDH> ChiTietDHs { get; set; }
+        public virtual ICollection<ChiTietDH> ChiTietDH { get; set; }
         public virtual KhachHang KhachHang { get; set; }
     }
 }

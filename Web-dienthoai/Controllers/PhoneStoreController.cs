@@ -12,17 +12,17 @@ namespace Web_dienthoai.Controllers
 {
     public class PhoneStoreController : Controller
     {
-        QLDienThoaiEntities db = new QLDienThoaiEntities();
-
+        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
+       
         // GET: PhoneStore
         public ActionResult Index()
         {
             var Pview = new List<ProductView>();
-            var sanpham = db.SanPhams.ToList();
+            var sanpham = db.SanPham.ToList();
 
             foreach (var item in sanpham)
             {
-                var hinhSP = db.HinhSPs.FirstOrDefault(id => id.MaSP == item.MaSP);
+                var hinhSP = db.HinhSP.FirstOrDefault(id => id.MaSP == item.MaSP);
                 var MyView = new ProductView()
                 {
                     SanPham = item,
@@ -37,7 +37,7 @@ namespace Web_dienthoai.Controllers
 
         public ActionResult LayHangDT()
         {
-            var dsDT = db.ThuongHieux.ToList();
+            var dsDT = db.ThuongHieu.ToList();
             return PartialView(dsDT);
         }
 
@@ -45,12 +45,12 @@ namespace Web_dienthoai.Controllers
         public ActionResult SPTheoHang(string MaTH)
         {
             var listsp = new List<ProductView>();
-            var sanpham = db.SanPhams.ToList();
-            var brand = db.ThuongHieux.FirstOrDefault(id => id.MaTH == MaTH);
+            var sanpham = db.SanPham.ToList();
+            var brand = db.ThuongHieu.FirstOrDefault(id => id.MaTH == MaTH);
 
             foreach (var item in sanpham)
             {
-                var hinhSP = db.HinhSPs.FirstOrDefault(id => id.MaSP == item.MaSP);
+                var hinhSP = db.HinhSP.FirstOrDefault(id => id.MaSP == item.MaSP);
                 
                 var myview = new ProductView()
                 {
@@ -75,12 +75,12 @@ namespace Web_dienthoai.Controllers
         {
             var list = new List<DetailsView>();
 
-            var phone = db.SanPhams.FirstOrDefault(s => s.MaSP== id);
-            var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == id);
-            var tskt = db.TSKTSPs.FirstOrDefault(s => s.MaSP == id);
+            var phone = db.SanPham.FirstOrDefault(s => s.MaSP== id);
+            var detail = db.ChiTietSP.FirstOrDefault(s => s.MaSP == id);
+            var tskt = db.TSKTSP.FirstOrDefault(s => s.MaSP == id);
 
-            var pics = (from h in db.HinhSPs
-                        join s in db.SanPhams on h.MaSP equals s.MaSP
+            var pics = (from h in db.HinhSP
+                        join s in db.SanPham on h.MaSP equals s.MaSP
                         where s.MaSP == id
                         select h).ToList();
 

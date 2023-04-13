@@ -9,7 +9,7 @@ namespace Web_dienthoai.Controllers
 {
     public class NguoiDungController : Controller
     {
-        QLDienThoaiEntities db = new QLDienThoaiEntities();
+        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
 
         // GET: NguoiDung
         [HttpGet]
@@ -26,8 +26,6 @@ namespace Web_dienthoai.Controllers
             {
                 if (string.IsNullOrEmpty(kh.TenKH))
                     ModelState.AddModelError(string.Empty, "Họ tên không được để trống");
-                if (string.IsNullOrEmpty(kh.TenDN))
-                    ModelState.AddModelError(string.Empty, "Tên đăng nhập không được để trống");
                 if (string.IsNullOrEmpty(kh.MK))
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 if (string.IsNullOrEmpty(kh.Email))
@@ -36,7 +34,7 @@ namespace Web_dienthoai.Controllers
                     ModelState.AddModelError(string.Empty, "Điện thoại không được để trống");
 
                 //Kiểm tra đã có ai đk tài khoản này hay chưa
-                var khachhang = db.KhachHangs.FirstOrDefault(id => id.TenDN == kh.TenDN);
+                var khachhang = db.KhachHang.FirstOrDefault(id => id.SDT == kh.SDT);
                 if(khachhang != null)
                     ModelState.AddModelError(string.Empty, "Tên đăng nhập đã được sử dụng, hãy chọn tên khác");
 
@@ -44,7 +42,7 @@ namespace Web_dienthoai.Controllers
                 {
                     try
                     {
-                        db.KhachHangs.Add(kh);
+                        db.KhachHang.Add(kh);
                         db.SaveChanges();
                     }
                     catch
@@ -73,7 +71,7 @@ namespace Web_dienthoai.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(kh.TenDN))
+                if (string.IsNullOrEmpty(kh.SDT))
                     ModelState.AddModelError(string.Empty, "Vui lòng điền tên đăng nhập");
                 if (string.IsNullOrEmpty(kh.MK))
                     ModelState.AddModelError(string.Empty, "Vui lòng điền mật khẩu");
@@ -81,7 +79,7 @@ namespace Web_dienthoai.Controllers
                 if (ModelState.IsValid)
                 {
                     //Tìm KH hợp lệ có trong CSDL
-                    var khachhang = db.KhachHangs.FirstOrDefault(id => id.TenDN == kh.TenDN && id.MK == kh.MK);
+                    var khachhang = db.KhachHang.FirstOrDefault(id => id.SDT == kh.SDT && id.MK == kh.MK);
                     if (khachhang != null)
                     {
                         ViewBag.ThongBao = "Đăng nhập thành công!";

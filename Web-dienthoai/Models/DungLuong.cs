@@ -17,13 +17,13 @@ namespace Web_dienthoai.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DungLuong()
         {
-            this.ChiTietSPs = new HashSet<ChiTietSP>();
+            this.ChiTietSP = new HashSet<ChiTietSP>();
         }
     
         public string MaDL { get; set; }
         public string KichThuocDL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietSP> ChiTietSPs { get; set; }
+        public virtual ICollection<ChiTietSP> ChiTietSP { get; set; }
     }
 }

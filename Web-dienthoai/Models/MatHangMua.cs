@@ -7,7 +7,7 @@ namespace Web_dienthoai.Models
 {
     public class MatHangMua
     {
-        QLDienThoaiEntities db = new QLDienThoaiEntities();
+        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
 
         public string MaSP { get; set; }
 
@@ -28,11 +28,11 @@ namespace Web_dienthoai.Models
         public MatHangMua(string MaSP)
         {
             this.MaSP = MaSP;
-            var phone = db.SanPhams.Single(s => s.MaSP == this.MaSP);
-            var pic = db.HinhSPs.FirstOrDefault(s => s.MaSP == this.MaSP);
-            var detail = db.ChiTietSPs.FirstOrDefault(s => s.MaSP == this.MaSP);
+            var phone = db.SanPham.Single(s => s.MaSP == this.MaSP);
+            var pic = db.SanPham.FirstOrDefault(s => s.MaSP == this.MaSP);
+            var detail = db.ChiTietSP.FirstOrDefault(s => s.MaSP == this.MaSP);
             this.TenSP = phone.TenSP;
-            this.HinhSP = pic.MaHinh;
+            this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == this.MaSP).ToString();
             this.DonGia = double.Parse(detail.Gia.ToString());
             this.SoLuong = 1;
         }

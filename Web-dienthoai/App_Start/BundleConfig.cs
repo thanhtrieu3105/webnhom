@@ -24,6 +24,9 @@ namespace Web_dienthoai
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                       "~/Content/Home.css",
+                        "~/Content/Image.css",
+                         "~/Content/mystyle.css",
                       "~/Content/site.css"));
         }
     }

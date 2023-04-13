@@ -137,58 +137,61 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDH.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietSP.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DetailsView.cs" />
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DungLuong.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhSP.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiKH.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MatHangMua.cs" />
     <Compile Include="Models\Mau.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStoreModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStoreModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStoreModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStoreModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TSKTSP.cs">
-      <DependentUpon>PhoneStoreModel.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -447,15 +450,15 @@
     <Content Include="Images\slideshow-1.jpg" />
     <Content Include="Images\slideshow-2.jpg" />
     <Content Include="Images\slideshow-3.jpg" />
-    <Content Include="Models\PhoneStoreModel.Context.tt">
+    <Content Include="Models\BookStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
-      <LastGenOutput>PhoneStoreModel.Context.cs</LastGenOutput>
+      <DependentUpon>BookStore.edmx</DependentUpon>
+      <LastGenOutput>BookStore.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PhoneStoreModel.tt">
+    <Content Include="Models\BookStore.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
-      <LastGenOutput>PhoneStoreModel.cs</LastGenOutput>
+      <DependentUpon>BookStore.edmx</DependentUpon>
+      <LastGenOutput>BookStore.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -468,12 +471,12 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="Models\PhoneStoreModel.edmx">
+    <EntityDeploy Include="Models\BookStore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PhoneStoreModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BookStore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PhoneStoreModel.edmx.diagram">
-      <DependentUpon>PhoneStoreModel.edmx</DependentUpon>
+    <Content Include="Models\BookStore.edmx.diagram">
+      <DependentUpon>BookStore.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

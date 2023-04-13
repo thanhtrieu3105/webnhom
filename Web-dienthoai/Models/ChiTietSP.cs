@@ -17,7 +17,7 @@ namespace Web_dienthoai.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChiTietSP()
         {
-            this.ChiTietDHs = new HashSet<ChiTietDH>();
+            this.ChiTietDH = new HashSet<ChiTietDH>();
         }
     
         public string MaCTSP { get; set; }
@@ -28,7 +28,7 @@ namespace Web_dienthoai.Models
         public Nullable<int> SoLuongKho { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDH> ChiTietDHs { get; set; }
+        public virtual ICollection<ChiTietDH> ChiTietDH { get; set; }
         public virtual DungLuong DungLuong { get; set; }
         public virtual Mau Mau { get; set; }
         public virtual SanPham SanPham { get; set; }
