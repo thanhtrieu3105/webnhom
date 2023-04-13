@@ -7,7 +7,7 @@ namespace Web_dienthoai.Models
 {
     public class MatHangMua
     {
-        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
+        QLDienThoaiEntities db = new QLDienThoaiEntities();
 
         public string MaSP { get; set; }
 

@@ -120,5 +120,13 @@ namespace Web_dienthoai.Controllers
             }
             return RedirectToAction("HienThiGioHang");
         }
+        public ActionResult DatHang()
+        {
+            List<MatHangMua> giohang = LayGioHang();
+            if (giohang == null || giohang.Count == 0) return RedirectToAction("Index", "PhoneStore");
+            ViewBag.TongSL = TinhTongSL();
+            ViewBag.TongTien = TinhTongTien();
+            return View(giohang);
+        }
     }
 }

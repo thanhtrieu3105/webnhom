@@ -645,7 +645,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLDienThoaiEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLDienThoaiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="ChiTietDH" EntityType="Self.ChiTietDH" />
           <EntitySet Name="ChiTietSP" EntityType="Self.ChiTietSP" />
@@ -705,7 +705,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLDienThoaiModelStoreContainer" CdmEntityContainer="QLDienThoaiEntities3">
+        <EntityContainerMapping StorageEntityContainer="QLDienThoaiModelStoreContainer" CdmEntityContainer="QLDienThoaiEntities">
           <EntitySetMapping Name="Admin">
             <EntityTypeMapping TypeName="QLDienThoaiModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

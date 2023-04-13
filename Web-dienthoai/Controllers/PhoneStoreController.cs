@@ -12,7 +12,7 @@ namespace Web_dienthoai.Controllers
 {
     public class PhoneStoreController : Controller
     {
-        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
+        QLDienThoaiEntities db = new QLDienThoaiEntities();
        
         // GET: PhoneStore
         public ActionResult Index()

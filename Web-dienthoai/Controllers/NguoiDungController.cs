@@ -9,7 +9,7 @@ namespace Web_dienthoai.Controllers
 {
     public class NguoiDungController : Controller
     {
-        QLDienThoaiEntities3 db = new QLDienThoaiEntities3();
+        QLDienThoaiEntities db = new QLDienThoaiEntities();
 
         // GET: NguoiDung
         [HttpGet]

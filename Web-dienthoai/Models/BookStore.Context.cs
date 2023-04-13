@@ -13,10 +13,10 @@ namespace Web_dienthoai.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLDienThoaiEntities3 : DbContext
+    public partial class QLDienThoaiEntities : DbContext
     {
-        public QLDienThoaiEntities3()
-            : base("name=QLDienThoaiEntities3")
+        public QLDienThoaiEntities()
+            : base("name=QLDienThoaiEntities")
         {
         }
     
