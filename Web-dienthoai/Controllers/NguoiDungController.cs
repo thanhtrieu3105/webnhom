@@ -9,7 +9,7 @@ namespace Web_dienthoai.Controllers
 {
     public class NguoiDungController : Controller
     {
-        QLDienThoaiEntities db = new QLDienThoaiEntities();
+         QLDienThoaiEntities db = new QLDienThoaiEntities();
 
         // GET: NguoiDung
         [HttpGet]
@@ -85,6 +85,7 @@ namespace Web_dienthoai.Controllers
                         ViewBag.ThongBao = "Đăng nhập thành công!";
                         //Lưu > session
                         Session["KhachHang"] = khachhang;
+                        return RedirectToAction("Index", "PhoneStore");
                     }
                     else
                         ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không hợp lệ!";

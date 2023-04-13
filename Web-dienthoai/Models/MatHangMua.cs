@@ -18,6 +18,7 @@ namespace Web_dienthoai.Models
         public double DonGia { get; set; }
 
         public int SoLuong { get; set; }
+        public string MaCTSP { get; set; }
 
 
         public double ThanhTien()
@@ -35,6 +36,7 @@ namespace Web_dienthoai.Models
             this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == this.MaSP).ToString();
             this.DonGia = double.Parse(detail.Gia.ToString());
             this.SoLuong = 1;
+            this.MaCTSP =db.ChiTietSP.FirstOrDefault(s => s.MaSP == this.MaSP).MaCTSP;
         }
     }
 }

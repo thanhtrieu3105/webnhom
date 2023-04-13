@@ -48,11 +48,13 @@
                 }
                 <td>@Html.ActionLink("Xóa sản phẩm", "XoaMatHang", "GioHang", new { MaSP = item.MaSP }, new { @class = "btn btn-danger" })</td>
             </tr>
-                
+
         }
         <tr style="font-weight:bold; text-align:right; color:red;">
             <td colspan="5">Tổng số lượng: @ViewBag.TongSL</td>
             <td colspan="1">Tổng tiền: @ViewBag.TongTien</td>
         </tr>
+      
     </tbody>
 </table>
+<div style="text-align:center">@Html.ActionLink("ĐẶT HÀNG", "ThongTinMuaHang", null, new { @class = "btn btn-primary" })</div> 

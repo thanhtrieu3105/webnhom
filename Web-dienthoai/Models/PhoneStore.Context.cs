@@ -35,7 +35,6 @@ namespace Web_dienthoai.Models
         public virtual DbSet<LoaiKH> LoaiKH { get; set; }
         public virtual DbSet<Mau> Mau { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TSKTSP> TSKTSP { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieu { get; set; }
     }

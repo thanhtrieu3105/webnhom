@@ -4,20 +4,18 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2 style="text-align:center;">ĐĂNG NHẬP</h2>
 
+<h2 class=" white-text" style="text-align: center">ĐĂNG NHẬP</h2>
 <br />
-
-<div class="row">
-
-    <div class="offset-md-1 col-md-10">
+<div class=" white-text">
+    <div class="offset-md-1 col-md-10" style="justify-content:center;display:flex">
         <h2 style="color: red;">@ViewBag.ThongBao</h2>
         @using (Html.BeginForm("DangNhap", "NguoiDung"))
         {
             @Html.ValidationSummary(true)
             <div class="form-group">
-                <label for="dangnhap">Tên đăng nhập:</label>
-                @Html.TextBox("TenDN", null, new
+                <label for="dangnhap">Tên đăng nhập (<i>SDT</i>):</label>
+                @Html.TextBox("SDT", null, new
                 {
                     @class = "form-control",
                     @id = "dangnhap",
@@ -33,6 +31,7 @@
                     required = "required"
                 })
             </div>
+            <br />
             <button type="submit" class="btn btn-primary">ĐĂNG NHẬP</button>
         }
     </div>
