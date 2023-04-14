@@ -93,5 +93,18 @@ namespace Web_dienthoai.Controllers
             }
             return View();
         }
+        public ActionResult UserPartial()
+        {
+            return PartialView();
+        }
+        public ActionResult TrangCaNhan()
+        {
+            var kh = Session["KhachHang"];
+            if(kh==null)
+            {
+                return RedirectToAction("DangNhap");
+            }
+            return View(kh);
+        }
     }
 }

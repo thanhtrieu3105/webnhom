@@ -218,6 +218,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\giohang1.png" />
     <Content Include="Images\home-image.png" />
     <Content Include="Images\iphoneslide.jpg" />
     <Content Include="Images\iphoneslide2.jpg" />
@@ -447,6 +448,7 @@
     <Content Include="Images\slideshow-1.jpg" />
     <Content Include="Images\slideshow-2.jpg" />
     <Content Include="Images\slideshow-3.jpg" />
+    <Content Include="Images\user.png" />
     <Content Include="Models\PhoneStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhoneStore.edmx</DependentUpon>
@@ -516,6 +518,8 @@
     <Content Include="Views\GioHang\DatHangThanhCong.cshtml" />
     <Content Include="Views\GioHang\CauHoiDKTK.cshtml" />
     <Content Include="Views\GioHang\ThongTinDKTK.cshtml" />
+    <Content Include="Views\NguoiDung\TrangCaNhan.cshtml" />
+    <Content Include="Views\NguoiDung\UserPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,7 +6,9 @@
 
 
 
-
+.white-text{
+    color:white;
+}
 .card{
     height: 25%;
     width: 60%;

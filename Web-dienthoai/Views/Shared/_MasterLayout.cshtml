@@ -22,25 +22,24 @@
             @*Navbar-item*@
             @Html.Action("LayHangDT", "PhoneStore")
 
+
+            @*   <div class="search-cart">
+        <div class="search-sp">
+            <i class="fa fa-search"></i>
+        </div>*@
+            
+        <div class="">
+            <i style="margin-right:5px">@Html.Action("GioHangPartial", "GioHang")</i>
+            <i >@Html.Action("UserPartial", "NguoiDung")</i>
+        </div>
+
            
-         @*   <div class="search-cart">
-                <div class="search-sp">
-                    <i class="fa fa-search"></i>
-                </div>*@
 
-                <div class="ml-auto">
-                    <i class="bi bi-bag">@Html.Action("GioHangPartial", "GioHang")</i>      
-                </div>
-@*
-                <div class="user-profile">
-                    <i class="fa fa-user"></i>
-                </div>
-*@
-              
-            </div>
+           
+        </div>
 
 
-            <form class="form-search" onsubmit="return false;" style="display:none;">
+            <form class="form-search " onsubmit="return false;" style="display:none;">
                 <div class="click-search">
                     <i class="search"></i>
                     <input type="text" placeholder="Tìm kiếm sản phẩm" />
@@ -61,17 +60,17 @@
     <div class="slideshow-container" style="padding-top:10px">
 
         <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
+            @*<div class="numbertext">1 / 3</div>*@
             <img src="~/Images/slideshow-1.jpg" style="width:100%; height: 300px;">
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
+            @*<div class="numbertext">2 / 3</div>*@
             <img src="~/Images/iphoneslide.jpg" style="width: 100%; height: 300px;">
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
+            @*<div class="numbertext">3 / 3</div>*@
             <img src="~/Images/iphoneslide2.jpg" style="width: 100%; height: 300px;">
         </div>
 

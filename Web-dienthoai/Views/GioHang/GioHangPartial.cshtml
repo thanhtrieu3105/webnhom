@@ -1,6 +1,5 @@
-﻿<link rel="stylesheet" href="~/Content/Image.css" />
-
-<a class="thin-text" href="@Url.Action("HienThiGioHang", "GioHang")" style="text-decoration: none; color:black;">
-    <i class="black-text">Số lượng sản phẩm trong giỏ: @ViewBag.TongSL</i> 
-  
+﻿
+<a href="@Url.Action("HienThiGioHang", "GioHang")" 
+   style="text-decoration: none; color: black; font-weight: bold;">
+    <img style="width:30px;height:30px" src="~/Images/giohang1.png" /> (@ViewBag.TongSL)
 </a>
