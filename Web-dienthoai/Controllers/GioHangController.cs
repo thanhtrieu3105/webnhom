@@ -82,7 +82,6 @@ namespace Web_dienthoai.Controllers
         public ActionResult GioHangPartial()
         {
             ViewBag.TongSL = TinhTongSL();
-            ViewBag.TongTien = TinhTongTien();
             return PartialView();
         }
 
@@ -128,7 +127,7 @@ namespace Web_dienthoai.Controllers
             if (giohang == null || giohang.Count == 0) return RedirectToAction("Index", "PhoneStore");
             ViewBag.TongSL = TinhTongSL();
             ViewBag.TongTien = TinhTongTien();
-            ViewBag.TongCong = TinhTongTien() + 25000;
+            ViewBag.TongCong = TinhTongTien();
             return View(giohang);
         }
         [HttpPost]
@@ -136,48 +135,46 @@ namespace Web_dienthoai.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (String.IsNullOrEmpty(dh.TenNguoiNhan))
-                    ModelState.AddModelError(String.Empty, "Họ tên không được để trống ");
+                //if (String.IsNullOrEmpty(dh.TenNguoiNhan))
+                //    ModelState.AddModelError(String.Empty, "Họ tên không được để trống ");
                 if (String.IsNullOrEmpty(dh.SDTnhan))
                     ModelState.AddModelError(String.Empty, "SDT không được để trống ");
                 if (String.IsNullOrEmpty(dh.DiaChiNhan))
                     ModelState.AddModelError(String.Empty, "Địa chỉ không được để trống ");
                 if (String.IsNullOrEmpty(dh.HTThanhToan))
-                    ModelState.AddModelError(String.Empty, "Chọn httt không được để trống ");
+                    ModelState.AddModelError(String.Empty, " Hình Thức Thanh Toán không được để trống ");
                 if (String.IsNullOrEmpty(dh.HTGiaohang))
-                    ModelState.AddModelError(String.Empty, "chon htgh không được để trống ");
+                    ModelState.AddModelError(String.Empty, " Hình Thức Giao Hàng không được để trống ");
                 if (ModelState.IsValid)
                 {
+                    dh.MaDH = TaoMa("mdh");//tạo tự động mã mới không trùng trong database
                     dh.TriGia = ((int)TinhTongTien());
                     //giao hang tan nha lam mac dinh se thu them 25k
-                    dh.TongTien = ((int)TinhTongTien()) + 25000;
+                    dh.TongTien = ((int)TinhTongTien());
                     dh.TinhTrang = "Chờ Duyệt";
                     dh.NgayDH = DateTime.Now;
-                    dh.MaDH = TaoMa("mdh");
+                    
 
                 }
                 else
                     return View();
             }
-            //tao khach hang moi bang thong tin giao hang
+            if (dh.HTGiaohang == "Giao hàng tiêu chuẩn") dh.TongTien += 30000;
+            else dh.TongTien += 66000;
+             db.DonHang.Add(dh);//luu don hang vao database
+            db.SaveChanges(); //luu truoc khi tạo chi tiết don hàng để có mã đơn hàng trong database
 
-            DonHang dh1 = LayTTDon(); //lay thong tin don trong sesion
-            dh1 = dh;//gan dh1=dh
-            Session["TTdonHang"] = dh1; //luu vao sesion
-            var kh = Session["KhachHang"] as KhachHang;
-            //ktr dang nhap neu co thif luu thong tin chi tiet don hang
-            if (kh != null)
-            {//dang dang nhap
-                dh.MaKH = kh.MaKH;
-            }
-            db.DonHang.Add(dh);//add don hang
-            db.SaveChanges();
+            DonHang dh1 = LayTTDon(); //lay thong tin don trong sesion neu co
+            dh1 = dh;//gan  don hang moi dien 
+            Session["TTdonHang"] = dh1; //luu vao sesion khi tao tk moi cho kh co madh tim databse
+           
+
             //them chi tiet don hang vao database
             ChiTietDH ctdh = new ChiTietDH();
             List<MatHangMua> giohang = LayGioHang();
             foreach (var item in giohang)
             {
-                ctdh.MaCTDH = TaoMa("ctdh");
+                ctdh.MaCTDH = TaoMa("ctdh");//tạo tự động mã mới không trùng trong database
                 ctdh.SoLuong = item.SoLuong;
                 ctdh.Thanhtien = ((int)item.ThanhTien());
                 ctdh.MaCTSP = item.MaCTSP;
@@ -185,9 +182,24 @@ namespace Web_dienthoai.Controllers
                 db.ChiTietDH.Add(ctdh);
             }
             db.SaveChanges();
-            if(kh==null)  return RedirectToAction("CauHoiDKTK");
-              
-            return RedirectToAction("DatHangThanhCong");
+
+          //ktr dang nhap neu co dang nhap thi luu don hàng cho tai khoan do
+            var kh = Session["KhachHang"] as KhachHang;
+
+            if (kh != null)
+            {//dang dang nhap
+                DonHang x = db.DonHang.FirstOrDefault(s => s.MaDH == dh.MaDH);
+                x.MaKH = kh.MaKH;// gan mã khách vào đơn hàng moi tao
+                db.SaveChanges();
+                return RedirectToAction("DatHangThanhCong");
+            }
+            else
+            {
+                
+                return RedirectToAction("CauHoiDKTK"); //tao khach hang moi bang thong tin giao hang
+            }
+
+          
         }
         private string TaoMa(string bien)
         {
@@ -230,6 +242,8 @@ namespace Web_dienthoai.Controllers
         }
         public ActionResult DatHangThanhCong()
         {
+            Session["GioHang"] = null;
+            Session["TTDonHang"] = null;
             return View();
         }
         public DonHang LayTTDon()
@@ -246,15 +260,16 @@ namespace Web_dienthoai.Controllers
         public ActionResult ThongTinDKTK()
         {
 
-            var dh = LayTTDon();
-            if (dh == null) return RedirectToAction("HienThiGioHang");
-            if (db.KhachHang.FirstOrDefault(s => s.SDT == dh.SDTnhan) != null)
+            var dh = LayTTDon(); //lay ma don hang vua dien buoc truoc gan vao tai khoan moi tao
+            if (dh == null) return RedirectToAction("HienThiGioHang");//test loi code k lien quan
+            if (db.KhachHang.FirstOrDefault(s => s.SDT == dh.SDTnhan) != null)//kiem tra co trung tk khong lay sdt lm tk
             {
-                ViewBag.thongbao = "SDT đã được dùng không thể vạo tài khoản mới.";
+                ViewBag.thongbao = "SDT đã được dùng không thể tạo tài khoản mới.";
                 return View();
             }
             else
             {
+              
                 var tk = new KhachHang();
                 tk.TenKH = dh.TenNguoiNhan;
                 tk.SDT = dh.SDTnhan;
@@ -273,6 +288,8 @@ namespace Web_dienthoai.Controllers
                 var donhang = db.DonHang.FirstOrDefault(s => s.MaDH == dh.MaDH);
                 donhang.MaKH = a.MaKH;
                 db.SaveChanges();
+                Session["GioHang"] = null;
+                Session["TTDonHang"] = null;
                 return View();
             }
 

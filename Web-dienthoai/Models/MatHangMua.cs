@@ -33,7 +33,7 @@ namespace Web_dienthoai.Models
             var pic = db.SanPham.FirstOrDefault(s => s.MaSP == this.MaSP);
             var detail = db.ChiTietSP.FirstOrDefault(s => s.MaSP == this.MaSP);
             this.TenSP = phone.TenSP;
-            this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == this.MaSP).ToString();
+            this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == this.MaSP).MaHinh;
             this.DonGia = double.Parse(detail.Gia.ToString());
             this.SoLuong = 1;
             this.MaCTSP =db.ChiTietSP.FirstOrDefault(s => s.MaSP == this.MaSP).MaCTSP;

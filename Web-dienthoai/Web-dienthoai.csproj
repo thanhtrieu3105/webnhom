@@ -218,11 +218,13 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\dola.png" />
     <Content Include="Images\giohang1.png" />
     <Content Include="Images\home-image.png" />
     <Content Include="Images\iphoneslide.jpg" />
     <Content Include="Images\iphoneslide2.jpg" />
     <Content Include="Images\Logo-StudioGear-3-red---black.png" />
+    <Content Include="Images\momo.png" />
     <Content Include="Images\Phones\huawei-honor20-1.jpg" />
     <Content Include="Images\Phones\huawei-honor20-2.jpg" />
     <Content Include="Images\Phones\huawei-honor20-3.jpg" />
@@ -448,7 +450,10 @@
     <Content Include="Images\slideshow-1.jpg" />
     <Content Include="Images\slideshow-2.jpg" />
     <Content Include="Images\slideshow-3.jpg" />
+    <Content Include="Images\tien.jpg" />
     <Content Include="Images\user.png" />
+    <Content Include="Images\xe.png" />
+    <Content Include="Images\xe1.png" />
     <Content Include="Models\PhoneStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PhoneStore.edmx</DependentUpon>

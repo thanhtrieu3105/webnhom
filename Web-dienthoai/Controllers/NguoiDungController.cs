@@ -94,17 +94,29 @@ namespace Web_dienthoai.Controllers
             return View();
         }
         public ActionResult UserPartial()
+
         {
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh != null) ViewBag.name = kh.TenKH.ToString();
+            else ViewBag.name = "";
+
+
             return PartialView();
         }
         public ActionResult TrangCaNhan()
         {
-            var kh = Session["KhachHang"];
+            var kh = Session["KhachHang"] as KhachHang;
             if(kh==null)
             {
                 return RedirectToAction("DangNhap");
             }
             return View(kh);
+        }
+        public ActionResult DangXuat()
+        {
+            Session["KhachHang"] = null;
+
+            return RedirectToAction("Index", "PhoneStore");
         }
     }
 }

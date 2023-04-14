@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="~/Content/Image.css" />
 
 <h2 class="white-text" style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
-<table class="table table-bordered white-text">
+<table class="table table-bordered white-text" >
     <thead>
         <tr>
             <th>Mã sản phẩm</th>
@@ -31,15 +31,15 @@
                 <td>@item.MaSP</td>
                 <td>@item.TenSP</td>
 
-                <td><img src="~/Images/Phones/@item.HinhSP" style="width:25%; height:25%" /></td>
+                <td ><img src="~/Images/Phones/@item.HinhSP" style="width:100px; height:30%" /></td>
                 @*  <td> null </td>*@
                 @using (Html.BeginForm("CapNhatMatHang", "GioHang", new { MaSP = item.MaSP }))
                 {
                     <td>
-                        <input type="number" min="1" value="@item.SoLuong" name="SoLuong" />
+                        <input style="width:100px;" type="number" min="1" value="@item.SoLuong" name="SoLuong" />
                     </td>
-                    <td>@item.DonGia</td>
-                    <td>@item.ThanhTien()</td>
+                    <td>@String.Format("{0:0,0}", @item.DonGia) đ</td>
+                    <td>@String.Format("{0:0,0}", @item.ThanhTien()) đ</td>
                     <td>@Html.ActionLink("Chi tiết", "Details", "PhoneStore", new { id = item.MaSP }, new { @class = "btn btn-success" })</td>
                     <td>
                         <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -52,9 +52,9 @@
         }
         <tr style="font-weight:bold; text-align:right; color:red;">
             <td colspan="5">Tổng số lượng: @ViewBag.TongSL</td>
-            <td colspan="1">Tổng tiền: @ViewBag.TongTien</td>
+            <td colspan="1">Tổng tiền:@String.Format("{0:0,0}", @ViewBag.TongTien) đ</td>
         </tr>
       
     </tbody>
 </table>
-<div style="text-align:center">@Html.ActionLink("ĐẶT HÀNG", "ThongTinMuaHang", null, new { @class = "btn btn-primary" })</div> 
+<div style="text-align:center;margin:10px">@Html.ActionLink("ĐẶT HÀNG", "ThongTinMuaHang", null, new { @class = "btn btn-primary" })</div> 

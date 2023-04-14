@@ -21,59 +21,76 @@
     <tbody>
         @foreach (var sp in Model)
         {
-            <tr>
-                <td>@sp.MaSP</td>
-                <td>@sp.TenSP</td>
-                <td><img src="~/Images/@sp.HinhSP" style="width:100%" /></td>
-                <td>@sp.SoLuong</td>
-                <td>@String.Format("{0:0,0}", sp.DonGia)</td>
-                <td>@String.Format("{0:0,0}", sp.ThanhTien())</td>
-            </tr>
+        <tr>
+            <td>@sp.MaSP</td>
+            <td>@sp.TenSP</td>
+            <td><img src="~/Images/Phones/@sp.HinhSP" style="width:100px; height:30%" /></td>
+            <td>@sp.SoLuong</td>
+            <td>@String.Format("{0:0,0}", sp.DonGia) đ</td>
+            <td>@String.Format("{0:0,0}", sp.ThanhTien()) đ</td>
+        </tr>
         }
         <tr style="font-weight:bold; text-align:right; color:red;">
             <td colspan="4">Tổng số lượng: @ViewBag.TongSL</td>
-            <td colspan="5">Tổng tiền: @ViewBag.TongTien</td>
+            <td colspan="5">Tổng tiền:@String.Format("{0:0,0}", @ViewBag.TongTien) đ</td>
         </tr>
     </tbody>
 
 </table>
-<h4 class="white-text" style="text-align:center">Thông Tin Người Nhận</h4>
-<div class="row white-text">
-    <div class="offset-md-1 col-md-10">
+<h4 class="white-text" style="text-align:center">Thông Tin Giao Hàng</h4>
+<div class="row ">
+    <div class="offset-md-1 col-md-10" style="background-color:white;border-radius:10px">
         @using (Html.BeginForm("ThongTinMuaHang", "GioHang"))
         {
             @Html.ValidationSummary(true)
-            <div class="form-group">
-                <label for="name">Họ và Tên :</label>
+
+            <h5 style="font-weight: bold;margin-top:5px">Thông Tin Người Nhận</h5>
+            <div class="form-group ">
+                <label for="name" style="font-weight: bold">Họ và Tên :</label>
                 @Html.TextBox("TenNguoiNhan", null, new { @class = "form-control", @id = "name", required = "required" })
             </div>
             <div class="form-group">
-                <label for="sdt">Số Điện Thoại:</label>
+                <label for="sdt" style="font-weight: bold">Số Điện Thoại:</label>
                 @Html.TextBox("SDTnhan", null, new { @class = "form-control", @id = "sdt", required = "required" })
             </div>
             <div class="form-group">
-                <label for="diachi">Địa Chỉ</label>
+                <label for="diachi" style="font-weight: bold">Địa Chỉ</label>
                 @Html.TextBox("DiaChiNhan", null, new { @class = "form-control", @id = "diachi", required = "required" })
             </div>
+          
+            <hr />
             <div class="form-group">
-                <h5>Hình Thức Thanh Toán</h5>
-                <div class="form-check">
+                <h5 style="font-weight: bold">Hình Thức Thanh Toán</h5>
+                <div class="form-check" style="justify-items:center">
                     <input class="form-check-input" type="radio" id="httt" name="HTThanhToan" value="Thanh Toán Khi Nhận Hàng">
-                    <label for="httt" style="padding:5px;color:black;background-color:white;font-weight:bold">Thanh Toán Khi Nhận Hàng</label>
+                    <div style=" border-radius:10px; font-weight: bold; width: max-content; padding:5px; border-style: solid; border-color:darkgrey">
+                        <img style="width:50px;height:50px" src="~/Images/tien.jpg" /> <a>Thanh Toán khi nhận hàng</a>
+                    </div>
                 </div>
+                <br />
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="httt" name="HTThanhToan" value="Thanh Toán Chuyển Khoản">
-                    <label for="httt" style="padding:5px;color:black;background-color:white;font-weight:bold">Thanh Toán Chuyển Khoản</label>
+                    <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                        <img style="width:50px;height:50px" src="~/Images/momo.png" /> <a>Ví MoMo </a>
+                    </div>
                 </div>
             </div>
+            <hr />
             <div class="form-group">
-                <h5>Hình Thức Giao Hàng </h5>
+                <h5 style="font-weight: bold">Hình Thức Giao Hàng </h5>
                 <div class="form-check">
+                    <input class="form-check-input" type="radio" id="htgt" name="HTGiaohang" value="Giao hàng tiêu chuẩn">
+                    <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                        <img style="width:50px;height:50px" src="~/Images/xe1.png" /> <a>Giao hàng tiêu chuẩn </a><i style="color:red">Phí 30.000 đ</i>
+                    </div>
+                </div>
+                <br />
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="htgt" name="HTGiaohang" value="Giao hàng hỏa tốc">
+                    <div style="border-radius: 10px; font-weight: bold; width: max-content; padding: 5px; border-style: solid; border-color: darkgrey ">
+                        <img style="width:50px;height:50px" src="~/Images/xe.png" /> <a>Giao hàng hỏa tốc </a><i style="color:red">Phí 66.000 đ</i>
+                    </div>
 
-                    <input class="form-check-input" type="radio" id="htgt" name="HTGiaohang" value="Giao Hàng Tận Nhà">
-                    <label class="form-check-label" for="htgh" style="padding:5px;color:black;background-color:white;font-weight:bold">
-                        Giao Hàng Tận Nhà <i style="color:red">Phí 25.000 vnd</i>
-                    </label>
                 </div>
             </div>
             <div style="text-align:center;padding:10px">
@@ -82,5 +99,6 @@
         }
 
     </div>
+   
 </div>
 
