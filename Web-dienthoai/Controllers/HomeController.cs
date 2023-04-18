@@ -36,5 +36,6 @@ namespace Web_dienthoai.Controllers
         {
             return View();
         }
+       
     }
 }

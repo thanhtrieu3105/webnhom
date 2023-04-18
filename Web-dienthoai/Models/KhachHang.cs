@@ -14,8 +14,7 @@ namespace Web_dienthoai.Models
     
     public partial class KhachHang
     {
-        public int MaKH { get; set; }
-        public string PrimaryKey { get; set; }
+        public string MaKH { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }

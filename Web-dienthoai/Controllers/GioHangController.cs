@@ -135,8 +135,8 @@ namespace Web_dienthoai.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (String.IsNullOrEmpty(dh.TenNguoiNhan))
-                //    ModelState.AddModelError(String.Empty, "Họ tên không được để trống ");
+                if (String.IsNullOrEmpty(dh.TenNguoiNhan))
+                    ModelState.AddModelError(String.Empty, "Họ tên không được để trống ");
                 if (String.IsNullOrEmpty(dh.SDTnhan))
                     ModelState.AddModelError(String.Empty, "SDT không được để trống ");
                 if (String.IsNullOrEmpty(dh.DiaChiNhan))
@@ -201,7 +201,7 @@ namespace Web_dienthoai.Controllers
 
           
         }
-        private string TaoMa(string bien)
+        public string TaoMa(string bien)
         {
             int ma = 10;
             if (bien == "mdh")
@@ -262,7 +262,7 @@ namespace Web_dienthoai.Controllers
 
             var dh = LayTTDon(); //lay ma don hang vua dien buoc truoc gan vao tai khoan moi tao
             if (dh == null) return RedirectToAction("HienThiGioHang");//test loi code k lien quan
-            if (db.KhachHang.FirstOrDefault(s => s.SDT == dh.SDTnhan) != null)//kiem tra co trung tk khong lay sdt lm tk
+            if (db.KhachHang.FirstOrDefault(s => s.SDT == dh.SDTnhan) != null)//lay sdt lm tk kiem tra co trung tk khong 
             {
                 ViewBag.thongbao = "SDT đã được dùng không thể tạo tài khoản mới.";
                 return View();

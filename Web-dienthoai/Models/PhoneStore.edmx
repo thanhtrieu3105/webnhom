@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="MaCTDH" />
           </Key>
-          <Property Name="MaCTDH" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="MaCTDH" Type="char" MaxLength="7" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="Thanhtien" Type="int" />
           <Property Name="MaCTSP" Type="char" MaxLength="7" />
@@ -39,15 +39,15 @@
             <PropertyRef Name="MaDH" />
           </Key>
           <Property Name="MaDH" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaKH" Type="int" />
+          <Property Name="MaKH" Type="char" MaxLength="4" />
           <Property Name="TenNguoiNhan" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SDTnhan" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="SDTnhan" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="DiaChiNhan" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TriGia" Type="int" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="25" />
           <Property Name="NgayDH" Type="smalldatetime" />
-          <Property Name="HTThanhToan" Type="nvarchar" MaxLength="50" />
-          <Property Name="HTGiaohang" Type="nvarchar" MaxLength="50" />
+          <Property Name="HTThanhToan" Type="varchar" MaxLength="50" />
+          <Property Name="HTGiaohang" Type="varchar" MaxLength="50" />
           <Property Name="TongTien" Type="int" />
         </EntityType>
         <EntityType Name="DungLuong">
@@ -68,14 +68,13 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PrimaryKey" Type="varchar" MaxLength="6" StoreGeneratedPattern="Computed" />
+          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SDT" Type="varchar" MaxLength="15" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="varchar" MaxLength="3" />
           <Property Name="NgaySinh" Type="smalldatetime" />
-          <Property Name="MK" Type="varchar" MaxLength="15" />
+          <Property Name="MK" Type="varchar" MaxLength="8" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="MaLoaiKH" Type="char" MaxLength="5" />
         </EntityType>
@@ -156,7 +155,7 @@
           <Property Name="MaTH" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="TenTH" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ChiTietDH__MaCTS__534D60F1">
+        <Association Name="FK__ChiTietDH__MaCTS__412EB0B6">
           <End Role="ChiTietSP" Type="Self.ChiTietSP" Multiplicity="0..1" />
           <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +167,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDH__MaDH__5441852A">
+        <Association Name="FK__ChiTietDH__MaDH__4222D4EF">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
           <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -277,11 +276,11 @@
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TSKTSP" EntityType="Self.TSKTSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietDH__MaCTS__534D60F1" Association="Self.FK__ChiTietDH__MaCTS__534D60F1">
+          <AssociationSet Name="FK__ChiTietDH__MaCTS__412EB0B6" Association="Self.FK__ChiTietDH__MaCTS__412EB0B6">
             <End Role="ChiTietSP" EntitySet="ChiTietSP" />
             <End Role="ChiTietDH" EntitySet="ChiTietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDH__MaDH__5441852A" Association="Self.FK__ChiTietDH__MaDH__5441852A">
+          <AssociationSet Name="FK__ChiTietDH__MaDH__4222D4EF" Association="Self.FK__ChiTietDH__MaDH__4222D4EF">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="ChiTietDH" EntitySet="ChiTietDH" />
           </AssociationSet>
@@ -331,13 +330,13 @@
           <Key>
             <PropertyRef Name="MaCTDH" />
           </Key>
-          <Property Name="MaCTDH" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaCTDH" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="Thanhtien" Type="Int32" />
           <Property Name="MaCTSP" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
           <Property Name="MaDH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="ChiTietSP" Relationship="Self.FK__ChiTietDH__MaCTS__534D60F1" FromRole="ChiTietDH" ToRole="ChiTietSP" />
-          <NavigationProperty Name="DonHang" Relationship="Self.FK__ChiTietDH__MaDH__5441852A" FromRole="ChiTietDH" ToRole="DonHang" />
+          <NavigationProperty Name="ChiTietSP" Relationship="Self.FK__ChiTietDH__MaCTS__412EB0B6" FromRole="ChiTietDH" ToRole="ChiTietSP" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__ChiTietDH__MaDH__4222D4EF" FromRole="ChiTietDH" ToRole="DonHang" />
         </EntityType>
         <EntityType Name="ChiTietSP">
           <Key>
@@ -349,7 +348,7 @@
           <Property Name="MaMau" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Name="Gia" Type="Int32" />
           <Property Name="SoLuongKho" Type="Int32" />
-          <NavigationProperty Name="ChiTietDH" Relationship="Self.FK__ChiTietDH__MaCTS__534D60F1" FromRole="ChiTietSP" ToRole="ChiTietDH" />
+          <NavigationProperty Name="ChiTietDH" Relationship="Self.FK__ChiTietDH__MaCTS__412EB0B6" FromRole="ChiTietSP" ToRole="ChiTietDH" />
           <NavigationProperty Name="DungLuong" Relationship="Self.FK__ChiTietSP__MaDL__32E0915F" FromRole="ChiTietSP" ToRole="DungLuong" />
           <NavigationProperty Name="Mau" Relationship="Self.FK__ChiTietSP__MaMau__33D4B598" FromRole="ChiTietSP" ToRole="Mau" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietSP__MaSP__31EC6D26" FromRole="ChiTietSP" ToRole="SanPham" />
@@ -359,17 +358,17 @@
             <PropertyRef Name="MaDH" />
           </Key>
           <Property Name="MaDH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaKH" Type="Int32" />
+          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
           <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SDTnhan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SDTnhan" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DiaChiNhan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TriGia" Type="Int32" />
           <Property Name="TinhTrang" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="NgayDH" Type="DateTime" Precision="0" />
-          <Property Name="HTThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HTGiaohang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HTThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HTGiaohang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TongTien" Type="Int32" />
-          <NavigationProperty Name="ChiTietDH" Relationship="Self.FK__ChiTietDH__MaDH__5441852A" FromRole="DonHang" ToRole="ChiTietDH" />
+          <NavigationProperty Name="ChiTietDH" Relationship="Self.FK__ChiTietDH__MaDH__4222D4EF" FromRole="DonHang" ToRole="ChiTietDH" />
         </EntityType>
         <EntityType Name="DungLuong">
           <Key>
@@ -391,14 +390,13 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PrimaryKey" Type="String" MaxLength="6" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-          <Property Name="MK" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MK" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaLoaiKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="LoaiKH" Relationship="Self.FK__KhachHang__MaLoa__3A81B327" FromRole="KhachHang" ToRole="LoaiKH" />
@@ -488,7 +486,7 @@
           <Property Name="TenTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK__SanPham__MaTH__286302EC" FromRole="ThuongHieu" ToRole="SanPham" />
         </EntityType>
-        <Association Name="FK__ChiTietDH__MaCTS__534D60F1">
+        <Association Name="FK__ChiTietDH__MaCTS__412EB0B6">
           <End Role="ChiTietSP" Type="Self.ChiTietSP" Multiplicity="0..1" />
           <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -500,7 +498,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDH__MaDH__5441852A">
+        <Association Name="FK__ChiTietDH__MaDH__4222D4EF">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
           <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -609,11 +607,11 @@
           <EntitySet Name="SanPham" EntityType="Self.SanPham" />
           <EntitySet Name="TSKTSP" EntityType="Self.TSKTSP" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
-          <AssociationSet Name="FK__ChiTietDH__MaCTS__534D60F1" Association="Self.FK__ChiTietDH__MaCTS__534D60F1">
+          <AssociationSet Name="FK__ChiTietDH__MaCTS__412EB0B6" Association="Self.FK__ChiTietDH__MaCTS__412EB0B6">
             <End Role="ChiTietSP" EntitySet="ChiTietSP" />
             <End Role="ChiTietDH" EntitySet="ChiTietDH" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDH__MaDH__5441852A" Association="Self.FK__ChiTietDH__MaDH__5441852A">
+          <AssociationSet Name="FK__ChiTietDH__MaDH__4222D4EF" Association="Self.FK__ChiTietDH__MaDH__4222D4EF">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="ChiTietDH" EntitySet="ChiTietDH" />
           </AssociationSet>
@@ -721,7 +719,6 @@
             <EntityTypeMapping TypeName="QLDienThoaiModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="PrimaryKey" ColumnName="PrimaryKey" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
