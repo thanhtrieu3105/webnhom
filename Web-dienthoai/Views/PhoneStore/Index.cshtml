@@ -11,6 +11,36 @@
 <link rel="stylesheet" href="~/Content/Image.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+@*slide show*@
+<div class="slideshow-container" style="padding-top:10px">
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">1 / 3</div>*@
+        <img src="~/Images/slideshow-1.jpg" style="width:100%; height: 300px;">
+    </div>
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">2 / 3</div>*@
+        <img src="~/Images/iphoneslide.jpg" style="width: 100%; height: 300px;">
+    </div>
+
+    <div class="mySlides fade">
+        @*<div class="numbertext">3 / 3</div>*@
+        <img src="~/Images/iphoneslide2.jpg" style="width: 100%; height: 300px;">
+    </div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+
+<br />
+<br />
+@*sile show*@
 
 @*Iphone*@
 <h3 class="align: text-center" style="color: white; font-weight: bold;">iPhone</h3>
@@ -206,3 +236,24 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>

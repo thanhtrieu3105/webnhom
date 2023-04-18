@@ -10,6 +10,25 @@ namespace Web_dienthoai.Controllers
     public class NguoiDungController : Controller
     {
          QLDienThoaiEntities db = new QLDienThoaiEntities();
+        public string TaoMa(string bien)
+        {
+            int ma = 10;
+            if (bien == "kh")
+            {
+
+                string makh = "KH" + ma.ToString();
+                //kiem tra ton tai ma don hang
+                while (db.KhachHang.FirstOrDefault(s => s.MaKH == makh) != null)
+                {
+                    ma++;
+                    makh = "KH" + ma.ToString();
+                }
+                return makh;
+            }
+          
+            else return null;
+
+        }
 
         // GET: NguoiDung
         [HttpGet]
@@ -30,6 +49,8 @@ namespace Web_dienthoai.Controllers
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 if (string.IsNullOrEmpty(kh.Email))
                     ModelState.AddModelError(string.Empty, "Email không được để trống");
+                if (string.IsNullOrEmpty(kh.DiaChi))
+                    ModelState.AddModelError(string.Empty, "Dịa chỉ không được để trống");
                 if (string.IsNullOrEmpty(kh.SDT))
                     ModelState.AddModelError(string.Empty, "Điện thoại không được để trống");
 
@@ -42,6 +63,7 @@ namespace Web_dienthoai.Controllers
                 {
                     try
                     {
+                        kh.MaKH = TaoMa("kh");
                         db.KhachHang.Add(kh);
                         db.SaveChanges();
                     }
@@ -103,7 +125,7 @@ namespace Web_dienthoai.Controllers
 
             return PartialView();
         }
-        public ActionResult TrangCaNhan()
+        public ActionResult TrangThongTinTK()
         {
             var kh = Session["KhachHang"] as KhachHang;
             if(kh==null)
@@ -117,6 +139,15 @@ namespace Web_dienthoai.Controllers
             Session["KhachHang"] = null;
 
             return RedirectToAction("Index", "PhoneStore");
+        }
+        public ActionResult TrangTK()
+        {
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh == null)
+            {
+                return RedirectToAction("DangNhap");
+            }
+            return View(kh);
         }
     }
 }

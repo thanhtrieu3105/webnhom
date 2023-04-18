@@ -19,6 +19,7 @@ CREATE TABLE ThuongHieu
 	MaTH CHAR(2) PRIMARY KEY,
 	TenTH nvarchar(50) NOT NULL,
 )
+alter table SanPham alter column MaSP varchar(4) 
 --SanPham
 CREATE TABLE SanPham
 (
@@ -81,7 +82,7 @@ CREATE TABLE KhachHang
 (
 	MaKH char(4) primary key,
 	TenKH nvarchar(50) NOT NULL,
-	SDT char(10) ,
+	SDT varchar(10) ,
 	DiaChi nvarchar(100),
 	GioiTinh varchar(3) check (GioiTinh in('Nam','Nu')),
 	NgaySinh  SMALLDATETIME,
@@ -90,6 +91,7 @@ CREATE TABLE KhachHang
 	MaLoaiKH char(5) foreign key (MaLoaiKH) REFERENCES LoaiKH(MaLoaiKH),
 )
 GO
+
 --DonHang
 CREATE TABLE DonHang
 (
@@ -101,8 +103,8 @@ CREATE TABLE DonHang
 	TriGia int check (TriGia > 0),
 	TinhTrang nvarchar(25),
 	NgayDH SMALLDATETIME,
-	HTThanhToan varchar(50),
-	HTGiaohang varchar(50),
+	HTThanhToan nvarchar(50),
+	HTGiaohang nvarchar(50),
 	TongTien int ,
 )
 
@@ -1537,4 +1539,3 @@ insert into KhachHang
 values('KH03',N'Nguyễn Thanh Tân','0366234567',N'235 Minh Phụng 10 Quận 11 HCM ','Nam','5/23/2000','1234abab','tannt@gmail.com','LKH03')
 
 
-select * from KhachHang

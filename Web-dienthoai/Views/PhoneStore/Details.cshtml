@@ -6,8 +6,9 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 <link rel="stylesheet" href="~/Content/Image.css" />
+
 
 <br />
 <h2 style="text-align:center; color: white">CHI TIẾT SẢN PHẨM</h2>
@@ -16,14 +17,33 @@
 
 <div>
 
-    <div>
-        @foreach (var item in Model.HinhSP)
-        {
-            <img class="my-image-product" style="color: white; display: block; margin: auto;" src="~/Images/Phones/@item.MaHinh" alt="" />
-            <br />
+    <div class="slideshow-container">
 
-        }
+        <div>
+            @foreach (var item in Model.HinhSP)
+            {
+                <div class="mySlides fade">
+                  
+                    <img src="~/Images/Phones/@item.MaHinh" style="width: 100%; height: 500px;">
+                </div>
+            }
+
+        </div>
+
     </div>
+
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+
+    </div>
+
+
 
     <hr /> <hr />
     <div style="padding-left: 100px; padding-right: 100px;">
@@ -173,5 +193,26 @@
 
     <hr /><hr />
 
-    <a class="btn btn-primary" style=" margin-left: 47%; padding:20px; margin-bottom:2%; font-weight:bold; justify-content: center; align-items: center;"  href="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.SanPham.MaSP })"> Đặt mua </a>
+    <a class="btn btn-primary" style=" margin-left: 47%; padding:20px; margin-bottom:2%; font-weight:bold; justify-content: center; align-items: center;" href="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.SanPham.MaSP })"> Đặt mua </a>
 </div>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>

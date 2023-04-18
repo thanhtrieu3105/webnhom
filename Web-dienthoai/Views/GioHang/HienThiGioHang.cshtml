@@ -19,8 +19,7 @@
             <th>Số lượng</th>
             <th>Đơn giá</th>
             <th>Thành tiền</th>
-            <th>Chi tiết</th>
-            <th>Cập nhật</th>
+            <th>Chi tiết</th>   
             <th>Xóa</th>
         </tr>
     </thead>
@@ -35,18 +34,16 @@
                 @*  <td> null </td>*@
                 @using (Html.BeginForm("CapNhatMatHang", "GioHang", new { MaSP = item.MaSP }))
                 {
-                    <td>
-                        <input style="width:100px;" type="number" min="1" value="@item.SoLuong" name="SoLuong" />
-                    </td>
+            <td>
+                <input style="width:100px;" type="number" min="1" value="@item.SoLuong" name="SoLuong" />
+                <button type="submit" class="btn btn-success">Lưu</button>
+            </td>
                     <td>@String.Format("{0:0,0}", @item.DonGia) đ</td>
                     <td>@String.Format("{0:0,0}", @item.ThanhTien()) đ</td>
-                    <td>@Html.ActionLink("Chi tiết", "Details", "PhoneStore", new { id = item.MaSP }, new { @class = "btn btn-success" })</td>
-                    <td>
-                        <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    </td>
+                    <td>@Html.ActionLink("Chi tiết", "Details", "PhoneStore", new { id = item.MaSP }, new { @class = "btn btn-success" })</td>             
 
                 }
-                <td>@Html.ActionLink("Xóa sản phẩm", "XoaMatHang", "GioHang", new { MaSP = item.MaSP }, new { @class = "btn btn-danger" })</td>
+                <td>@Html.ActionLink("Xóa", "XoaMatHang", "GioHang", new { MaSP = item.MaSP }, new { @class = "btn btn-danger" })</td>
             </tr>
 
         }
