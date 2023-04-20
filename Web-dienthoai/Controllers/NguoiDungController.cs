@@ -125,6 +125,7 @@ namespace Web_dienthoai.Controllers
 
             return PartialView();
         }
+<<<<<<< HEAD
        
         public ActionResult DangXuat()
         {
@@ -143,6 +144,9 @@ namespace Web_dienthoai.Controllers
             return View(kh);
         }
         public ActionResult TrangThongTinTK() /*trang thong tin ca nhan */
+=======
+        public ActionResult TrangThongTinTK()
+>>>>>>> main
         {
             var kh = Session["KhachHang"] as KhachHang;
             if(kh==null)
@@ -165,6 +169,15 @@ namespace Web_dienthoai.Controllers
             }
 
             return View(listItemDH);
+        }
+        public ActionResult TrangTK()
+        {
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh == null)
+            {
+                return RedirectToAction("DangNhap");
+            }
+            return View(kh);
         }
     }
 }

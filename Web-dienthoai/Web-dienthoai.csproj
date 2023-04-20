@@ -528,7 +528,10 @@
     <Content Include="Views\NguoiDung\TrangThongTinTK.cshtml" />
     <Content Include="Views\NguoiDung\UserPartial.cshtml" />
     <Content Include="Views\NguoiDung\TrangTK.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\NguoiDung\LichSuMuaHang.cshtml" />
+=======
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

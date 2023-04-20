@@ -4,7 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="bb244d429d0c4f1db15bac485be23ef4" Name="Diagram1" ZoomLevel="74">
+=======
+      <Diagram DiagramId="bb244d429d0c4f1db15bac485be23ef4" Name="Diagram1">
+>>>>>>> main
         <EntityTypeShape EntityType="QLDienThoaiModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietDH" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietSP" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />

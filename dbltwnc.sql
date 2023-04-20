@@ -19,7 +19,11 @@ CREATE TABLE ThuongHieu
 	MaTH CHAR(2) PRIMARY KEY,
 	TenTH nvarchar(50) NOT NULL,
 )
+<<<<<<< HEAD
 
+=======
+alter table SanPham alter column MaSP varchar(4) 
+>>>>>>> main
 --SanPham
 CREATE TABLE SanPham
 (
