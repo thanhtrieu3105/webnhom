@@ -19,7 +19,7 @@ CREATE TABLE ThuongHieu
 	MaTH CHAR(2) PRIMARY KEY,
 	TenTH nvarchar(50) NOT NULL,
 )
-alter table SanPham alter column MaSP varchar(4) 
+
 --SanPham
 CREATE TABLE SanPham
 (
@@ -78,13 +78,13 @@ CREATE TABLE LoaiKH
 GO
 
 --KHACHHNAG
-CREATE TABLE KhachHang
+CREATE TABLE KhachHang 
 (
 	MaKH char(4) primary key,
 	TenKH nvarchar(50) NOT NULL,
 	SDT varchar(10) ,
 	DiaChi nvarchar(100),
-	GioiTinh varchar(3) check (GioiTinh in('Nam','Nu')),
+	GioiTinh nvarchar(3) check (GioiTinh in('Nam',N'Nữ')),
 	NgaySinh  SMALLDATETIME,
 	MK varchar(8),
 	Email varchar(50),
@@ -1534,8 +1534,10 @@ values ('LKH04',N'Kim Cương','0.20')
 insert into KhachHang
 values('KH01',N'Nguyễn Văn Khải','0377270755',N'288 Sư Vạn Hạnh Phường 13 Quận 10 HCM ','Nam','5/23/2000','12345678','abc@gmail.com','LKH01')
 insert into KhachHang
-values('KH02',N'Nguyễn Thị Lan','0123456789',N'300 Sư Vạn Hạnh Phường 13 Quận 10 HCM ','Nu','1/24/1990','abcd1234','lan123@gmail.com','LKH02')
+values('KH02',N'Nguyễn Thị Lan','0123456789',N'300 Sư Vạn Hạnh Phường 13 Quận 10 HCM ',N'Nữ','1/24/1990','abcd1234','lan123@gmail.com','LKH02')
 insert into KhachHang
 values('KH03',N'Nguyễn Thanh Tân','0366234567',N'235 Minh Phụng 10 Quận 11 HCM ','Nam','5/23/2000','1234abab','tannt@gmail.com','LKH03')
+
+select * from ChiTietDH
 
 

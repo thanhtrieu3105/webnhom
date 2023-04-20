@@ -125,7 +125,24 @@ namespace Web_dienthoai.Controllers
 
             return PartialView();
         }
-        public ActionResult TrangThongTinTK()
+       
+        public ActionResult DangXuat()
+        {
+            Session["KhachHang"] = null;
+
+            return RedirectToAction("Index", "PhoneStore");
+        }
+       
+        public ActionResult TrangTK() /*trang taikhoan khi link vao taikhoan*/
+        {
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh == null)
+            {
+                return RedirectToAction("DangNhap");
+            }
+            return View(kh);
+        }
+        public ActionResult TrangThongTinTK() /*trang thong tin ca nhan */
         {
             var kh = Session["KhachHang"] as KhachHang;
             if(kh==null)
@@ -134,20 +151,20 @@ namespace Web_dienthoai.Controllers
             }
             return View(kh);
         }
-        public ActionResult DangXuat()
+        public ActionResult LichSuMuaHang(string id)
         {
-            Session["KhachHang"] = null;
-
-            return RedirectToAction("Index", "PhoneStore");
-        }
-        public ActionResult TrangTK()
-        {
-            var kh = Session["KhachHang"] as KhachHang;
-            if (kh == null)
+            var kh = db.KhachHang.FirstOrDefault(s => s.MaKH == id);
+            var listdh = db.DonHang.Where(s => s.MaKH == id).ToList();
+            List<ItemDonHang> listItemDH = new List<ItemDonHang>();
+            ItemDonHang it;
+            foreach (var item in listdh)
             {
-                return RedirectToAction("DangNhap");
+                var mactdh = db.ChiTietDH.FirstOrDefault(s => s.MaDH == item.MaDH).MaCTDH;
+                 it = new ItemDonHang(item.MaDH,mactdh);
+                listItemDH.Add(it);
             }
-            return View(kh);
+
+            return View(listItemDH);
         }
     }
 }

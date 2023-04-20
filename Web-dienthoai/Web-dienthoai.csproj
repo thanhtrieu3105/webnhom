@@ -155,6 +155,7 @@
     <Compile Include="Models\HinhSP.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemDonHang.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
@@ -213,6 +214,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Image.css" />
+    <Content Include="Content\lichsumuahang.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -526,6 +528,7 @@
     <Content Include="Views\NguoiDung\TrangThongTinTK.cshtml" />
     <Content Include="Views\NguoiDung\UserPartial.cshtml" />
     <Content Include="Views\NguoiDung\TrangTK.cshtml" />
+    <Content Include="Views\NguoiDung\LichSuMuaHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -167,21 +167,23 @@ namespace Web_dienthoai.Controllers
             DonHang dh1 = LayTTDon(); //lay thong tin don trong sesion neu co
             dh1 = dh;//gan  don hang moi dien 
             Session["TTdonHang"] = dh1; //luu vao sesion khi tao tk moi cho kh co madh tim databse
-           
+
 
             //them chi tiet don hang vao database
-            ChiTietDH ctdh = new ChiTietDH();
+            ChiTietDH ctdh;
             List<MatHangMua> giohang = LayGioHang();
             foreach (var item in giohang)
             {
+                ctdh = new ChiTietDH();
                 ctdh.MaCTDH = TaoMa("ctdh");//tạo tự động mã mới không trùng trong database
                 ctdh.SoLuong = item.SoLuong;
                 ctdh.Thanhtien = ((int)item.ThanhTien());
                 ctdh.MaCTSP = item.MaCTSP;
                 ctdh.MaDH = dh.MaDH;
                 db.ChiTietDH.Add(ctdh);
+                db.SaveChanges();
             }
-            db.SaveChanges();
+           
 
           //ktr dang nhap neu co dang nhap thi luu don hàng cho tai khoan do
             var kh = Session["KhachHang"] as KhachHang;
