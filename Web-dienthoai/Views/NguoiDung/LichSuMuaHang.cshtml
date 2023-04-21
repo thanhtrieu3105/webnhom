@@ -8,6 +8,7 @@
 
 <br />
 <h4 class="white-text text-center">Lịch sử mua hàng</h4>
+<h2 class="white-text">@ViewBag.thongbao</h2>
 <body>
     <div class="">
 
@@ -15,7 +16,7 @@
         {
             <hr style="border: 8px solid antiquewhite; " />
             <h6 class="white-text">Đơn hàng số :@item.MaDH</h6> <br />
-            
+
             <div>
                 <div class="DonHang white-text" style="display: flex; flex-direction: row">
                     <div class="div-left" style="width:15% ;text-align:center">
@@ -42,12 +43,9 @@
                     <p style="color:lightseagreen ;margin:0">@item.Tinhtrang </p>
                 </div>
                 <hr style="color:white" />
-                <div style="text-align:center">
-                    <button type="button" style="background-color:lightgray;height:40px;width:150px;border-radius:5px">Đánh Giá</button>
-                </div>
 
             </div>
-
+            <div style="text-align:center;padding-bottom:30px">@Html.ActionLink("Hủy", "HuyDon", "NguoiDung", new { MaDH = item.MaDH }, new { @class = "btn btn-danger" })</div>
 
         }
     </div>

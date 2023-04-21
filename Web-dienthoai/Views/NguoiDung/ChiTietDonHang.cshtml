@@ -6,6 +6,7 @@
 }
 
 <div class="white-text">
+   
     <hr style="border: 8px solid antiquewhite; " />
     <h4>@Model.donHang.TinhTrang</h4>
     <hr style="border: 8px solid antiquewhite; " />
@@ -19,10 +20,13 @@
                 <img class="w-75 h-100" src="~/Images/Phones/@s.HinhSP" alt="Lỗi Hình">
             </div>
             <div class="div-right" style="width:85%">
-                <h6 style="color:darkgoldenrod">@s.TenSP</h6 >
+                <h6 style="color:darkgoldenrod">@s.TenSP</h6>
                 <p>x @s.SoLuong</p>
                 <p style="color: darkgoldenrod">@String.Format("{0:0,0}", @s.DonGia) đ</p>
-                <p style="color: red">Thành tiền @String.Format("{0:0,0}", @s.ThanhTien) đ</p>
+                <p style="color: red">Thành tiền @String.Format("{0:0,0}", @s.ThanhTien) đ</p><br />
+                <div style="text-align:center">
+                    <button type="button" style="background-color:lightgray;height:40px;width:150px;border-radius:5px">Đánh Giá</button>
+                </div>
 
             </div>
         </div>

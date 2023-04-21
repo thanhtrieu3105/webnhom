@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0383544385ae4b30a6d383a105fc1c1b" Name="Diagram1">
+      <Diagram DiagramId="0383544385ae4b30a6d383a105fc1c1b" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="QLDienThoaiModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietDH" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietSP" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
@@ -27,6 +27,9 @@
         <AssociationConnector Association="QLDienThoaiModel.FK__KhachHang__MaLoa__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__SanPham__MaTH__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__TSKTSP__MaSP__44FF419A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.BinhLuan" Width="1.5" PointX="15.25" PointY="4.875" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__BinhLuan__MaKH__59FA5E80" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__BinhLuan__MaSP__59063A47" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

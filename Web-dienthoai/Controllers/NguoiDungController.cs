@@ -154,10 +154,11 @@ namespace Web_dienthoai.Controllers
             }
             return View(kh);
         }
-        public ActionResult LichSuMuaHang(string id)
+        public ActionResult LichSuMuaHang()
         {
-            var kh = db.KhachHang.FirstOrDefault(s => s.MaKH == id);
-            var listdh = db.DonHang.Where(s => s.MaKH == id).ToList();
+            var kh = Session["KhachHang"] as KhachHang;
+          
+            var listdh = db.DonHang.Where(s => s.MaKH == kh.MaKH).ToList();
             List<ItemDonHang> listItemDH = new List<ItemDonHang>();
             ItemDonHang it;
             foreach (var item in listdh)
@@ -193,6 +194,19 @@ namespace Web_dienthoai.Controllers
             ViewBag.tongsl = slsp;
             var ChiTietDonHangView = new ChiTietDonHangView(ListCTSP, donhang);
             return View(ChiTietDonHangView);
+        }
+        public ActionResult HuyDon(string MaDH)
+        {
+            DonHang dh = db.DonHang.FirstOrDefault(s => s.MaDH == MaDH);
+            if(dh.TinhTrang=="Chờ Duyệt")
+            {
+                dh.TinhTrang = "Hủy";
+                db.SaveChanges();
+                ViewBag.thongbao = "Hủy đơn hàng thành công";
+                return RedirectToAction("LichSuMuaHang");
+            }
+            ViewBag.thongbao = "Quý khách vui lòng từ chối khi nhận hàng";
+            return RedirectToAction("LichSuMuaHang");
         }
 
 

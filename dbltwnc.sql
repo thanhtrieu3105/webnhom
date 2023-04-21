@@ -19,11 +19,7 @@ CREATE TABLE ThuongHieu
 	MaTH CHAR(2) PRIMARY KEY,
 	TenTH nvarchar(50) NOT NULL,
 )
-<<<<<<< HEAD
 
-=======
-alter table SanPham alter column MaSP varchar(4) 
->>>>>>> main
 --SanPham
 CREATE TABLE SanPham
 (
@@ -173,7 +169,13 @@ CREATE TABLE TSKTSP
 )
 GO
 
-
+create table BinhLuan
+(
+	MaSP CHAR(4) NOT NULL primary key  foreign key(MaSP) REFERENCES SanPham(MaSP)  ,
+	MaKH char(4) NOT NULL  foreign key(MaKH) REFERENCES KhachHang(MaKH),
+	BinhLuan nvarchar(250) 
+)
+select * from DonHang
 ----KyThuat--
 --CREATE TABLE KyThuat
 --(

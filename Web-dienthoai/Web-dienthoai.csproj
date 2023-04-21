@@ -139,6 +139,9 @@
     <Compile Include="Models\Admin.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BinhLuan.cs">
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietDH.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
@@ -535,6 +538,7 @@
     <Content Include="Views\NguoiDung\LichSuMuaHang.cshtml" />
     <Content Include="Views\NguoiDung\TrangTK.cshtml" />
     <Content Include="Views\NguoiDung\ChiTietDonHang.cshtml" />
+    <Content Include="Views\PhoneStore\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

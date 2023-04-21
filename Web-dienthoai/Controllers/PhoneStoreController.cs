@@ -97,5 +97,35 @@ namespace Web_dienthoai.Controllers
             
             return View(myview);
         }
+        [HttpGet]
+        public ActionResult Comments(string MaSP,string Kh)
+        {
+            MatHangMua mh = new MatHangMua(MaSP);
+            return View(mh);
+        }
+        [HttpPost]
+        //public ActionResult Comments(BinhLuan bl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (string.IsNullOrEmpty(bl.BinhLuan1))
+        //            ModelState.AddModelError(string.Empty, "Bình luận trống");
+               
+        //        if (ModelState.IsValid)
+        //        {
+        //            //Tìm KH hợp lệ có trong CSDL
+        //            var khachhang = db.KhachHang.FirstOrDefault(id => id.SDT == kh.SDT && id.MK == kh.MK);
+        //            if (khachhang != null)
+        //            {
+        //                ViewBag.ThongBao = "Đăng nhập thành công!";
+        //                //Lưu > session
+        //                Session["KhachHang"] = khachhang;
+        //                return RedirectToAction("Index", "PhoneStore");
+        //            }
+        //            else
+        //                ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không hợp lệ!";
+        //        }
+        //        return View(mh);
+        //}
     }
 }
