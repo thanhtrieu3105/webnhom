@@ -4,22 +4,25 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
     KhachHang kh = Session["KhachHang"] as KhachHang;
 }
+
 @using Web_dienthoai.Models
 @model KhachHang
-<header style="color:white">TenTK:@kh.TenKH 0_0</header> <br />
+<header style="color:white"> TenTK:@kh.TenKH 0_0</header>
+<br />
 <body>
-    <div style="color:white">MUC CHUC NANG</div><br />
-    <div > @Html.ActionLink("Thong Tin Nguoi Dung", "TrangThongTinTK", "NguoiDung", null, new { @class = "btn btn-primary" })</div>
-
-<<<<<<< HEAD
+    <div style="color:white"> MUC CHUC NANG</div><br />
     <div style="margin-top:5px;padding:5px;background-color:white">
-       @Html.ActionLink("Lịch Sử Mua Hàng","LichSuMuaHang","NguoiDung", new { id = kh.MaKH}, new { @class = "text-dark text-decoration-none" })
+        @Html.ActionLink("Tài Khoản", "TrangThongTinTK", "NguoiDung", null, new { @class = "text-dark text-decoration-none" })
     </div>
-    <div style="text-align:center" > @Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung", null, new { @class = "btn btn-primary" })</div>
-=======
-    <div style="color:white">lich su mua hang</div>
-    <div style="text-align:center"> @Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung", null, new { @class = "btn btn-primary" })</div>
->>>>>>> main
 
+
+    <div style="margin-top:5px;padding:5px;background-color:white">
+        @Html.ActionLink("Lịch Sử Mua Hàng", "LichSuMuaHang", "NguoiDung", new { id = kh.MaKH }, new { @class = "text-dark text-decoration-none" })
+        
+    </div>
+    <br />
+    <div style="text-align:center">
+        @Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung", null, new { @class = "btn btn-primary" })
+    </div>
 </body>
 

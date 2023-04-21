@@ -149,12 +149,9 @@ namespace Web_dienthoai.Controllers
                 {
                     dh.MaDH = TaoMa("mdh");//tạo tự động mã mới không trùng trong database
                     dh.TriGia = ((int)TinhTongTien());
-                    //giao hang tan nha lam mac dinh se thu them 25k
                     dh.TongTien = ((int)TinhTongTien());
                     dh.TinhTrang = "Chờ Duyệt";
                     dh.NgayDH = DateTime.Now;
-                    
-
                 }
                 else
                     return View();

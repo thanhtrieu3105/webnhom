@@ -142,9 +142,11 @@
     <Compile Include="Models\ChiTietDH.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietDonHangView.cs" />
     <Compile Include="Models\ChiTietSP.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CTSPView.cs" />
     <Compile Include="Models\DetailsView.cs" />
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
@@ -183,6 +185,9 @@
     </Compile>
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\SanPham.cs">
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
@@ -527,11 +532,9 @@
     <Content Include="Views\GioHang\ThongTinDKTK.cshtml" />
     <Content Include="Views\NguoiDung\TrangThongTinTK.cshtml" />
     <Content Include="Views\NguoiDung\UserPartial.cshtml" />
-    <Content Include="Views\NguoiDung\TrangTK.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\NguoiDung\LichSuMuaHang.cshtml" />
-=======
->>>>>>> main
+    <Content Include="Views\NguoiDung\TrangTK.cshtml" />
+    <Content Include="Views\NguoiDung\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

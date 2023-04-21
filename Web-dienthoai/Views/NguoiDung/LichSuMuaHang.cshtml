@@ -6,19 +6,20 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2 class="white-text text-center">LichSuMuaHang</h2>
+<br />
+<h4 class="white-text text-center">Lịch sử mua hàng</h4>
 <body>
     <div class="">
+
         @foreach (var item in Model)
         {
             <hr style="border: 8px solid antiquewhite; " />
+            <h6 class="white-text">Đơn hàng số :@item.MaDH</h6> <br />
+            
             <div>
                 <div class="DonHang white-text" style="display: flex; flex-direction: row">
                     <div class="div-left" style="width:15% ;text-align:center">
-                        <a @*href="@Url.Action("ChiTietDH", "NguoiDung", new { id = item.SanPham.MaSP })"*@>
-                            <img class="w-75 h-100"
-                                 src="~/Images/Phones/@item.HinhSP" alt="Lỗi Hình">
-                        </a>
+                        <img class="w-75 h-100" src="~/Images/Phones/@item.HinhSP" alt="Lỗi Hình">
                     </div>
                     <div class="div-right" style="width:85%">
                         <h5>@item.TenSP</h5>
@@ -29,7 +30,7 @@
                 </div>
                 <hr style="color:white" />
                 <div>
-                    <a href="">Xem Thêm </a>
+                    <a href=" @Url.Action("ChiTietDonHang", "NguoiDung", new { id = item.MaDH }) ">Xem Thêm </a>
                 </div>
                 <hr style="color:white" />
                 <div>

@@ -4,11 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< HEAD
-      <Diagram DiagramId="bb244d429d0c4f1db15bac485be23ef4" Name="Diagram1" ZoomLevel="74">
-=======
-      <Diagram DiagramId="bb244d429d0c4f1db15bac485be23ef4" Name="Diagram1">
->>>>>>> main
+      <Diagram DiagramId="0383544385ae4b30a6d383a105fc1c1b" Name="Diagram1">
         <EntityTypeShape EntityType="QLDienThoaiModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietDH" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ChiTietSP" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
@@ -19,6 +15,7 @@
         <EntityTypeShape EntityType="QLDienThoaiModel.LoaiKH" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.Mau" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.SanPham" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDienThoaiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.TSKTSP" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLDienThoaiModel.ThuongHieu" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietDH__MaCTS__412EB0B6" ManuallyRouted="false" />
@@ -27,7 +24,7 @@
         <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietSP__MaMau__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__ChiTietSP__MaSP__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__HinhSP__MaSP__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="QLDienThoaiModel.FK__KhachHang__MaLoa__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDienThoaiModel.FK__KhachHang__MaLoa__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__SanPham__MaTH__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="QLDienThoaiModel.FK__TSKTSP__MaSP__44FF419A" ManuallyRouted="false" />
       </Diagram>

@@ -125,7 +125,7 @@ namespace Web_dienthoai.Controllers
 
             return PartialView();
         }
-<<<<<<< HEAD
+
        
         public ActionResult DangXuat()
         {
@@ -144,9 +144,8 @@ namespace Web_dienthoai.Controllers
             return View(kh);
         }
         public ActionResult TrangThongTinTK() /*trang thong tin ca nhan */
-=======
-        public ActionResult TrangThongTinTK()
->>>>>>> main
+
+
         {
             var kh = Session["KhachHang"] as KhachHang;
             if(kh==null)
@@ -170,14 +169,36 @@ namespace Web_dienthoai.Controllers
 
             return View(listItemDH);
         }
-        public ActionResult TrangTK()
+        public ActionResult ChiTietDonHang(string id)
         {
-            var kh = Session["KhachHang"] as KhachHang;
-            if (kh == null)
+            var list = new List<ChiTietDonHangView>();
+
+            var donhang = db.DonHang.FirstOrDefault(s => s.MaDH == id);
+
+            var chitietdonhang = db.ChiTietDH.Where(s => s.MaDH == donhang.MaDH);
+            //List CTSPV
+            var ListCTSP = new List<CTSPView>();
+            int? slsp=0;
+            int phivanchuyen = 0;
+            foreach (var item in chitietdonhang.ToList())
             {
-                return RedirectToAction("DangNhap");
+                var MaCTSP = item.MaCTSP;
+                var ctspv = new CTSPView(MaCTSP,item.SoLuong);
+                ListCTSP.Add(ctspv);
+                slsp += ctspv.SoLuong;
             }
-            return View(kh);
+            if (donhang.HTGiaohang == "Giao hàng tiêu chuẩn")  phivanchuyen = 30000;
+            else  phivanchuyen = 66000;
+            ViewBag.phivc = phivanchuyen;
+            ViewBag.tongsl = slsp;
+            var ChiTietDonHangView = new ChiTietDonHangView(ListCTSP, donhang);
+            return View(ChiTietDonHangView);
         }
+
+
     }
 }
+
+
+
+
