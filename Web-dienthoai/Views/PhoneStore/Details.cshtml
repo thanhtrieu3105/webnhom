@@ -194,6 +194,22 @@
     <hr /><hr />
 
     <a class="btn btn-primary" style=" margin-left: 47%; padding:20px; margin-bottom:2%; font-weight:bold; justify-content: center; align-items: center;" href="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.SanPham.MaSP })"> Đặt mua </a>
+    <div style="border-radius: 5px; background-color: white; margin: 0px auto" class="w-50">
+        <h5 style="text-align:center">Đánh giá Điện thoại @Model.SanPham.TenSP  </h5>
+        <hr />
+        <p style="text-align:center">@ViewBag.thongbao</p>
+        @foreach( var item in Model.BinhLuan)
+            {
+            <p><b>@item.HoTen</b>|@item.ThoiGian</p> <br />
+            <p>@item.Chiase</p>
+            <hr />
+            }
+    <div style="text-align:center">
+      
+            @Html.ActionLink("Binh luan","Comments","PhoneStore", new { id= Model.SanPham.MaSP} )
+</div>
+     
+    </div>
 </div>
 <script>
     let slideIndex = 0;

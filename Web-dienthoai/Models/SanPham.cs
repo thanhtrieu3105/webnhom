@@ -27,6 +27,7 @@ namespace Web_dienthoai.Models
         public string MaTH { get; set; }
         public string MoTaSP { get; set; }
     
+        public virtual BinhLuan BinhLuan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSP> ChiTietSP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -34,6 +35,5 @@ namespace Web_dienthoai.Models
         public virtual ThuongHieu ThuongHieu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TSKTSP> TSKTSP { get; set; }
-        public virtual BinhLuan BinhLuan { get; set; }
     }
 }

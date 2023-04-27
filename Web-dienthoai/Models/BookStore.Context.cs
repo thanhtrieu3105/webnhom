@@ -26,6 +26,7 @@ namespace Web_dienthoai.Models
         }
     
         public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<BinhLuan> BinhLuan { get; set; }
         public virtual DbSet<ChiTietDH> ChiTietDH { get; set; }
         public virtual DbSet<ChiTietSP> ChiTietSP { get; set; }
         public virtual DbSet<DonHang> DonHang { get; set; }
@@ -38,6 +39,5 @@ namespace Web_dienthoai.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TSKTSP> TSKTSP { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieu { get; set; }
-        public virtual DbSet<BinhLuan> BinhLuans { get; set; }
     }
 }

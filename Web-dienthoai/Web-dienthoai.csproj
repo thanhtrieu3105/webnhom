@@ -137,67 +137,67 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BinhLuan.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDH.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHangView.cs" />
     <Compile Include="Models\ChiTietSP.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTSPView.cs" />
     <Compile Include="Models\DetailsView.cs" />
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DungLuong.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhSP.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemDonHang.cs" />
     <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiKH.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MatHangMua.cs" />
     <Compile Include="Models\Mau.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStore.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStore.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStore.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhoneStore.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhoneStore.edmx</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TSKTSP.cs">
-      <DependentUpon>PhoneStore.tt</DependentUpon>
+      <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -464,15 +464,15 @@
     <Content Include="Images\user.png" />
     <Content Include="Images\xe.png" />
     <Content Include="Images\xe1.png" />
-    <Content Include="Models\PhoneStore.Context.tt">
+    <Content Include="Models\BookStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneStore.edmx</DependentUpon>
-      <LastGenOutput>PhoneStore.Context.cs</LastGenOutput>
+      <DependentUpon>BookStore.edmx</DependentUpon>
+      <LastGenOutput>BookStore.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PhoneStore.tt">
+    <Content Include="Models\BookStore.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhoneStore.edmx</DependentUpon>
-      <LastGenOutput>PhoneStore.cs</LastGenOutput>
+      <DependentUpon>BookStore.edmx</DependentUpon>
+      <LastGenOutput>BookStore.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -485,12 +485,12 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="Models\PhoneStore.edmx">
+    <EntityDeploy Include="Models\BookStore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PhoneStore.Designer.cs</LastGenOutput>
+      <LastGenOutput>BookStore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PhoneStore.edmx.diagram">
-      <DependentUpon>PhoneStore.edmx</DependentUpon>
+    <Content Include="Models\BookStore.edmx.diagram">
+      <DependentUpon>BookStore.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -539,9 +539,11 @@
     <Content Include="Views\NguoiDung\TrangTK.cshtml" />
     <Content Include="Views\NguoiDung\ChiTietDonHang.cshtml" />
     <Content Include="Views\PhoneStore\Comments.cshtml" />
+    <Content Include="Views\PhoneStore\CamOn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\BinhLuan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

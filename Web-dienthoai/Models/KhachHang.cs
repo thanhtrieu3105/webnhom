@@ -17,7 +17,7 @@ namespace Web_dienthoai.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            this.BinhLuans = new HashSet<BinhLuan>();
+            this.BinhLuan = new HashSet<BinhLuan>();
         }
     
         public string MaKH { get; set; }
@@ -30,8 +30,8 @@ namespace Web_dienthoai.Models
         public string Email { get; set; }
         public string MaLoaiKH { get; set; }
     
-        public virtual LoaiKH LoaiKH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
+        public virtual ICollection<BinhLuan> BinhLuan { get; set; }
+        public virtual LoaiKH LoaiKH { get; set; }
     }
 }

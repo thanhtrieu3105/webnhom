@@ -169,13 +169,19 @@ CREATE TABLE TSKTSP
 )
 GO
 
+drop table BinhLuan
 create table BinhLuan
 (
 	MaSP CHAR(4) NOT NULL primary key  foreign key(MaSP) REFERENCES SanPham(MaSP)  ,
-	MaKH char(4) NOT NULL  foreign key(MaKH) REFERENCES KhachHang(MaKH),
-	BinhLuan nvarchar(250) 
+	MaKH char(4)   foreign key(MaKH) REFERENCES KhachHang(MaKH),
+	HoTen nvarchar (30) not null ,
+	SDT varchar(11) not null,
+	Chiase nvarchar(250) ,
+	Anh varchar(50),
+	TrangThai bit,
+	ThoiGian datetime
 )
-select * from DonHang
+select * from HinhSP where MaSP='IP05'
 ----KyThuat--
 --CREATE TABLE KyThuat
 --(

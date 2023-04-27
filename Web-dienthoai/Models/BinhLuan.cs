@@ -16,7 +16,12 @@ namespace Web_dienthoai.Models
     {
         public string MaSP { get; set; }
         public string MaKH { get; set; }
-        public string BinhLuan1 { get; set; }
+        public string HoTen { get; set; }
+        public string SDT { get; set; }
+        public string Chiase { get; set; }
+        public string Anh { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
+        public Nullable<System.DateTime> ThoiGian { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
         public virtual SanPham SanPham { get; set; }

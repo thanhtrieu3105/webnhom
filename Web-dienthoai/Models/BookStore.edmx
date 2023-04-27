@@ -18,8 +18,13 @@
             <PropertyRef Name="MaSP" />
           </Key>
           <Property Name="MaSP" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="BinhLuan" Type="nvarchar" MaxLength="250" />
+          <Property Name="MaKH" Type="char" MaxLength="4" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Chiase" Type="nvarchar" MaxLength="250" />
+          <Property Name="Anh" Type="varchar" MaxLength="50" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="ThoiGian" Type="datetime" />
         </EntityType>
         <EntityType Name="ChiTietDH">
           <Key>
@@ -173,8 +178,8 @@
           <Property Name="MaTH" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="TenTH" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__BinhLuan__MaKH__59FA5E80">
-          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+        <Association Name="FK__BinhLuan__MaKH__66603565">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KhachHang">
@@ -185,7 +190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BinhLuan__MaSP__59063A47">
+        <Association Name="FK__BinhLuan__MaSP__656C112C">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -320,11 +325,11 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TSKTSP" EntityType="Self.TSKTSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BinhLuan__MaKH__59FA5E80" Association="Self.FK__BinhLuan__MaKH__59FA5E80">
+          <AssociationSet Name="FK__BinhLuan__MaKH__66603565" Association="Self.FK__BinhLuan__MaKH__66603565">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="BinhLuan" EntitySet="BinhLuan" />
           </AssociationSet>
-          <AssociationSet Name="FK__BinhLuan__MaSP__59063A47" Association="Self.FK__BinhLuan__MaSP__59063A47">
+          <AssociationSet Name="FK__BinhLuan__MaSP__656C112C" Association="Self.FK__BinhLuan__MaSP__656C112C">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="BinhLuan" EntitySet="BinhLuan" />
           </AssociationSet>
@@ -376,6 +381,21 @@
           <Property Name="TKAdmin" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MKAdmin" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ChucVu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BinhLuan">
+          <Key>
+            <PropertyRef Name="MaSP" />
+          </Key>
+          <Property Name="MaSP" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="HoTen" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chiase" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Anh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK__BinhLuan__MaKH__628FA481" FromRole="BinhLuan" ToRole="KhachHang" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__BinhLuan__MaSP__619B8048" FromRole="BinhLuan" ToRole="SanPham" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ChiTietDH">
           <Key>
@@ -450,8 +470,8 @@
           <Property Name="MK" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaLoaiKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BinhLuan" Relationship="Self.FK__BinhLuan__MaKH__628FA481" FromRole="KhachHang" ToRole="BinhLuan" />
           <NavigationProperty Name="LoaiKH" Relationship="Self.FK__KhachHang__MaLoa__49C3F6B7" FromRole="KhachHang" ToRole="LoaiKH" />
-          <NavigationProperty Name="BinhLuans" Relationship="QLDienThoaiModel.FK__BinhLuan__MaKH__59FA5E80" FromRole="KhachHang" ToRole="BinhLuan" />
         </EntityType>
         <EntityType Name="LoaiKH">
           <Key>
@@ -478,11 +498,11 @@
           <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MaTH" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MoTaSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BinhLuan" Relationship="Self.FK__BinhLuan__MaSP__619B8048" FromRole="SanPham" ToRole="BinhLuan" />
           <NavigationProperty Name="ChiTietSP" Relationship="Self.FK__ChiTietSP__MaSP__31EC6D26" FromRole="SanPham" ToRole="ChiTietSP" />
           <NavigationProperty Name="HinhSP" Relationship="Self.FK__HinhSP__MaSP__2B3F6F97" FromRole="SanPham" ToRole="HinhSP" />
           <NavigationProperty Name="ThuongHieu" Relationship="Self.FK__SanPham__MaTH__286302EC" FromRole="SanPham" ToRole="ThuongHieu" />
           <NavigationProperty Name="TSKTSP" Relationship="Self.FK__TSKTSP__MaSP__44FF419A" FromRole="SanPham" ToRole="TSKTSP" />
-          <NavigationProperty Name="BinhLuan" Relationship="QLDienThoaiModel.FK__BinhLuan__MaSP__59063A47" FromRole="SanPham" ToRole="BinhLuan" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -549,6 +569,30 @@
           <Property Name="TenTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK__SanPham__MaTH__286302EC" FromRole="ThuongHieu" ToRole="SanPham" />
         </EntityType>
+        <Association Name="FK__BinhLuan__MaKH__628FA481">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuan__MaSP__619B8048">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSP" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="MaSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ChiTietDH__MaCTS__412EB0B6">
           <End Role="ChiTietSP" Type="Self.ChiTietSP" Multiplicity="0..1" />
           <End Role="ChiTietDH" Type="Self.ChiTietDH" Multiplicity="*" />
@@ -659,6 +703,7 @@
         </Association>
         <EntityContainer Name="QLDienThoaiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" />
           <EntitySet Name="ChiTietDH" EntityType="Self.ChiTietDH" />
           <EntitySet Name="ChiTietSP" EntityType="Self.ChiTietSP" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" />
@@ -671,6 +716,14 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TSKTSP" EntityType="Self.TSKTSP" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
+          <AssociationSet Name="FK__BinhLuan__MaKH__628FA481" Association="Self.FK__BinhLuan__MaKH__628FA481">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuan__MaSP__619B8048" Association="Self.FK__BinhLuan__MaSP__619B8048">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+          </AssociationSet>
           <AssociationSet Name="FK__ChiTietDH__MaCTS__412EB0B6" Association="Self.FK__ChiTietDH__MaCTS__412EB0B6">
             <End Role="ChiTietSP" EntitySet="ChiTietSP" />
             <End Role="ChiTietDH" EntitySet="ChiTietDH" />
@@ -707,50 +760,7 @@
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="TSKTSP" EntitySet="TSKTSP" />
           </AssociationSet>
-          <EntitySet Name="BinhLuans" EntityType="QLDienThoaiModel.BinhLuan" />
-          <AssociationSet Name="FK__BinhLuan__MaKH__59FA5E80" Association="QLDienThoaiModel.FK__BinhLuan__MaKH__59FA5E80">
-            <End Role="KhachHang" EntitySet="KhachHang" />
-            <End Role="BinhLuan" EntitySet="BinhLuans" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BinhLuan__MaSP__59063A47" Association="QLDienThoaiModel.FK__BinhLuan__MaSP__59063A47">
-            <End Role="SanPham" EntitySet="SanPham" />
-            <End Role="BinhLuan" EntitySet="BinhLuans" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BinhLuan">
-          <Key>
-            <PropertyRef Name="MaSP" />
-          </Key>
-          <Property Name="MaSP" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="MaKH" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="BinhLuan1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="KhachHang" Relationship="QLDienThoaiModel.FK__BinhLuan__MaKH__59FA5E80" FromRole="BinhLuan" ToRole="KhachHang" />
-          <NavigationProperty Name="SanPham" Relationship="QLDienThoaiModel.FK__BinhLuan__MaSP__59063A47" FromRole="BinhLuan" ToRole="SanPham" />
-        </EntityType>
-        <Association Name="FK__BinhLuan__MaKH__59FA5E80">
-          <End Type="QLDienThoaiModel.KhachHang" Role="KhachHang" Multiplicity="1" />
-          <End Type="QLDienThoaiModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="BinhLuan">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BinhLuan__MaSP__59063A47">
-          <End Type="QLDienThoaiModel.SanPham" Role="SanPham" Multiplicity="1" />
-          <End Type="QLDienThoaiModel.BinhLuan" Role="BinhLuan" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SanPham">
-              <PropertyRef Name="MaSP" />
-            </Principal>
-            <Dependent Role="BinhLuan">
-              <PropertyRef Name="MaSP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -763,6 +773,20 @@
                 <ScalarProperty Name="TKAdmin" ColumnName="TKAdmin" />
                 <ScalarProperty Name="MKAdmin" ColumnName="MKAdmin" />
                 <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuan">
+            <EntityTypeMapping TypeName="QLDienThoaiModel.BinhLuan">
+              <MappingFragment StoreEntitySet="BinhLuan">
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Chiase" ColumnName="Chiase" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -930,15 +954,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BinhLuans">
-            <EntityTypeMapping TypeName="QLDienThoaiModel.BinhLuan">
-              <MappingFragment StoreEntitySet="BinhLuan">
-                <ScalarProperty Name="BinhLuan1" ColumnName="BinhLuan" />
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -953,7 +968,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

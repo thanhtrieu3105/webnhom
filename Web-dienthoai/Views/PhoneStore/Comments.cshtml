@@ -1,52 +1,44 @@
-﻿@*@using Web_dienthoai.Models
-@model MatHangMua
+﻿@using Web_dienthoai.Models
+@model SanPham
 @{
     ViewBag.Title = "Comments";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    
 }
 
 
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Tên sản phẩm</th>
-            <th>Hình ảnh</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Thành tiền</th>
-
-        </tr>
-    </thead>
-    <tbody>
-
-        {
-        <tr>
-            <td>@Model.MaSP</td>
-            <td>@Model.TenSP</td>
-
-            <td><img src="~/Images/Phones/@Model.HinhSP" style="width:100px; height:30%" /></td>
-
-            <td>
-                <p>Số lượng:@Model.SoLuong</p>
-               
-            </td>
-            <td>@String.Format("{0:0,0}", @Model.DonGia) đ</td>
-            <td>@String.Format("{0:0,0}", @Model.ThanhTien()) đ</td>
-        </tr>
-
-    </tbody>
-
-
-</table>
-<div class="mb-3">
-
-    <label for="exampleFormControlTextarea1" class="form-label">Bình luận</label>
+<form class="w-50 " style="margin:0px auto">
     @using (Html.BeginForm("Comments", "PhoneStore"))
     {
         @Html.ValidationSummary(true)
-        <textarea class="form-control" id="BinhLuan" rows="3"></textarea>
-        <button type="submit" class="btn btn-primary">ĐĂNG NHẬP</button>
-        @Html.ActionLink("Lưu", "Comments", "PhoneStore", new { @class = "btn btn-success" })
+        <div class="mb-3 " style="text-align:center">
+            <img src="~/Images/Phones/@ViewBag.hinhsp" style="width: 20%; height: 120px;" />
+        </div>
+        <div style="text-align:center">
+            <h5 class="white-text fw-bold">@Model.TenSP</h5>
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="Chiase" rows="3" placeholder="Chia sẻ cảm nhận của bạn"></textarea>
+        </div>
+        <div class="mb-3 white-text">
+            <input type="file" id="Anh" aria-label="gửi ảnh thực tế">
+
+        </div>
+        <div class="mb-3 row">
+            <div class="col-md-6">
+                <input type="text" class="form-control " id="Name" placeholder="Họ tên (Bắt buộc)">
+
+            </div>
+            <div class="col-md-6">
+                <input type="number" class="form-control " id="SDT" placeholder="Số điện thoại (Bắt buộc)">
+            </div>
+        </div>
+
+        <p class="white-text">Chúng tôi cam kết sẽ bảo mật số điện thoại của bạn</p>
+        ViewBag.masp = @Model.MaSP;
+        <div>
+            <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+        </div>
     }
-</div>*@
+
+</form>
