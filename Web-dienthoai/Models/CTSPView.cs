@@ -9,6 +9,7 @@ namespace Web_dienthoai.Models
     {
         QLDienThoaiEntities db = new QLDienThoaiEntities();
         public string MaCTSP { get; set; }
+        public string MaSP { get; set; }
 
         public string TenSP { get; set; }
 
@@ -22,8 +23,10 @@ namespace Web_dienthoai.Models
         public CTSPView(string MaCTSP, int? sl)
         {
             this.MaCTSP = MaCTSP;
+
             var CTSP = db.ChiTietSP.FirstOrDefault(s => s.MaCTSP == MaCTSP);
             var SP = db.SanPham.FirstOrDefault(s => s.MaSP == CTSP.MaSP);
+            this.MaSP = SP.MaSP;
             this.TenSP = SP.TenSP;
             this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == SP.MaSP).MaHinh;
             this.DonGia = CTSP.Gia;

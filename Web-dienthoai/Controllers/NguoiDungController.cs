@@ -195,9 +195,9 @@ namespace Web_dienthoai.Controllers
             var ChiTietDonHangView = new ChiTietDonHangView(ListCTSP, donhang);
             return View(ChiTietDonHangView);
         }
-        public ActionResult HuyDon(string MaDH)
+        public ActionResult HuyDon(string id)
         {
-            DonHang dh = db.DonHang.FirstOrDefault(s => s.MaDH == MaDH);
+            DonHang dh = db.DonHang.FirstOrDefault(s => s.MaDH == id);
             if(dh.TinhTrang=="Chờ Duyệt")
             {
                 dh.TinhTrang = "Hủy";
@@ -207,6 +207,13 @@ namespace Web_dienthoai.Controllers
             }
             ViewBag.thongbao = "Quý khách vui lòng từ chối khi nhận hàng";
             return RedirectToAction("LichSuMuaHang");
+        }
+        public ActionResult XacNhanHuyDon(string madh)
+        {
+            var kh = Session["KhachHang"] as KhachHang;
+            ViewBag.makh = kh.MaKH;
+            ViewBag.madh = madh;
+            return View();
         }
 
 

@@ -14,6 +14,7 @@ namespace Web_dienthoai.Models
     
     public partial class BinhLuan
     {
+        public int MaBL { get; set; }
         public string MaSP { get; set; }
         public string MaKH { get; set; }
         public string HoTen { get; set; }

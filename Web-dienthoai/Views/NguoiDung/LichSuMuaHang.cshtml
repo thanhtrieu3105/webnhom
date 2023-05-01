@@ -9,7 +9,7 @@
 <br />
 <h4 class="white-text text-center">Lịch sử mua hàng</h4>
 <h2 class="white-text">@ViewBag.thongbao</h2>
-<body>
+<body style="margin-left:10px">
     <div class="">
 
         @foreach (var item in Model)
@@ -40,12 +40,12 @@
                 </div>
                 <hr style="color:white" />
                 <div>
-                    <p style="color:lightseagreen ;margin:0">@item.Tinhtrang </p>
+                    <p style="color:lightseagreen ;margin:0">Trạng Thái: @item.Tinhtrang </p>
                 </div>
                 <hr style="color:white" />
 
             </div>
-            <div style="text-align:center;padding-bottom:30px">@Html.ActionLink("Hủy", "HuyDon", "NguoiDung", new { MaDH = item.MaDH }, new { @class = "btn btn-danger" })</div>
+            <div style="text-align:center;padding-bottom:30px">@Html.ActionLink("Hủy", "XacNhanHuyDon", "NguoiDung", new { MaDH = item.MaDH }, new { @class = "btn btn-danger" })</div>
 
         }
     </div>

@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<div class="white-text">
-   
+<div class="white-text ">
+
     <hr style="border: 8px solid antiquewhite; " />
     <h4>@Model.donHang.TinhTrang</h4>
     <hr style="border: 8px solid antiquewhite; " />
@@ -25,9 +25,13 @@
                 <p style="color: darkgoldenrod">@String.Format("{0:0,0}", @s.DonGia) đ</p>
                 <p style="color: red">Thành tiền @String.Format("{0:0,0}", @s.ThanhTien) đ</p><br />
                 <div style="text-align:center">
-                    <button type="button" style="background-color:lightgray;height:40px;width:150px;border-radius:5px">Đánh Giá</button>
-                </div>
+                    @*<button type="button" style="background-color:lightgray;height:40px;width:150px;border-radius:5px" >Đánh Giá</button>
+                    <a href="@Url.Action("Details", "PhoneStore", new { id =s.MaSP })">
+                       
+                    </a>*@
+                    @Html.ActionLink("Đánh giá", "Details", "PhoneStore", new { id = s.MaSP }, new { @class = "btn btn-secondary" })
 
+                </div>
             </div>
         </div>
         <hr style="border: 8px solid antiquewhite; " />

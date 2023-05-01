@@ -169,10 +169,11 @@ CREATE TABLE TSKTSP
 )
 GO
 
-drop table BinhLuan
+
 create table BinhLuan
 (
-	MaSP CHAR(4) NOT NULL primary key  foreign key(MaSP) REFERENCES SanPham(MaSP)  ,
+	MaBL int identity(1,1) primary key,
+	MaSP CHAR(4) NOT NULL foreign key(MaSP) REFERENCES SanPham(MaSP)  ,
 	MaKH char(4)   foreign key(MaKH) REFERENCES KhachHang(MaKH),
 	HoTen nvarchar (30) not null ,
 	SDT varchar(11) not null,

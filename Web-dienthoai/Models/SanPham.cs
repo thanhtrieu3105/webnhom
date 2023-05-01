@@ -17,6 +17,7 @@ namespace Web_dienthoai.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
+            this.BinhLuan = new HashSet<BinhLuan>();
             this.ChiTietSP = new HashSet<ChiTietSP>();
             this.HinhSP = new HashSet<HinhSP>();
             this.TSKTSP = new HashSet<TSKTSP>();
@@ -27,7 +28,8 @@ namespace Web_dienthoai.Models
         public string MaTH { get; set; }
         public string MoTaSP { get; set; }
     
-        public virtual BinhLuan BinhLuan { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuan> BinhLuan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSP> ChiTietSP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

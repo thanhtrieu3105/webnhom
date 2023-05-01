@@ -92,35 +92,33 @@ namespace Web_dienthoai.Controllers
                 ChiTietSP = detail,
                 TSKTSP = tskt,
                 HinhSP = pics,
-                BinhLuan=binhluan
+                BinhLuan = binhluan
             };
-            if(binhluan.Count==0) ViewBag.thongbao="(Chưa có đánh giá)";
+            if (binhluan.Count == 0) ViewBag.thongbao = "(Chưa có đánh giá)";
 
             list.Add(myview);
-
+            Session["spdangxem"] = id;
             return View(myview);
         }
+
         [HttpGet]
-        public ActionResult Comments(string masp)
+        public ActionResult BinhLuanKH()
         {
-            var hinhsp = db.HinhSP.FirstOrDefault(s => s.MaSP == masp);
+            var masp = Session["spdangxem"].ToString();
+            HinhSP hinhsp = db.HinhSP.FirstOrDefault(s => s.MaSP == masp);
             string hinh = hinhsp.MaHinh.ToString();
-            ViewBag.hinhsp = hinh;
             var sanpham = db.SanPham.FirstOrDefault(s => s.MaSP == masp);
-            return View(sanpham);
+            ViewBag.hinhsp = hinh;
+            ViewBag.tensp = sanpham.TenSP;
+            ViewBag.masp = sanpham.MaSP;
+            return View();
         }
         [HttpPost]
-        public ActionResult Comments(BinhLuan bl, HttpPostedFileBase Anh)
+        [ValidateAntiForgeryToken]
+        public ActionResult BinhLuanKH([Bind(Include = "Chiase,HoTen,SDT")] BinhLuan bl, HttpPostedFileBase Anh)
         {
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(bl.Chiase))
-                    ModelState.AddModelError(string.Empty, "Bình luận trống");
-                if (string.IsNullOrEmpty(bl.HoTen))
-                    ModelState.AddModelError(string.Empty, " Họ tên trống");
-                if (string.IsNullOrEmpty(bl.SDT))
-                    ModelState.AddModelError(string.Empty, "Số điện thoại trống");
-                var kh = Session["TaiKhoan"] as KhachHang;
                 if (Anh != null)
                 {
                     //Lấy tên file của hình được up lên
@@ -137,22 +135,25 @@ namespace Web_dienthoai.Controllers
                     Anh.SaveAs(path);
 
                 }
-                if (kh!=null)
+                var kh = Session["TaiKhoan"] as KhachHang;
+                if (kh != null)
                 {
                     bl.MaKH = kh.MaKH;
-                    
+
                 }
                 bl.TrangThai = true;
                 bl.ThoiGian = DateTime.Now;
-                bl.MaSP = ViewBag.masp;
+                bl.MaSP = Session["spdangxem"].ToString();
                 db.BinhLuan.Add(bl);
                 db.SaveChanges();
-                return RedirectToAction("CamOn",bl.MaSP);
+                return RedirectToAction("Index");
             }
+
             return View();
         }
-        public ActionResult CamOn(string masp)
+        public ActionResult CamOn()
         {
+            var masp = Session["spdangxem"].ToString();
             ViewBag.masp = masp;
             return View();
         }
