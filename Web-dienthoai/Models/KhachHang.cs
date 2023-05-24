@@ -18,6 +18,7 @@ namespace Web_dienthoai.Models
         public KhachHang()
         {
             this.BinhLuan = new HashSet<BinhLuan>();
+            this.DonHang = new HashSet<DonHang>();
         }
     
         public string MaKH { get; set; }
@@ -32,6 +33,8 @@ namespace Web_dienthoai.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuan { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHang { get; set; }
         public virtual LoaiKH LoaiKH { get; set; }
     }
 }

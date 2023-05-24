@@ -3,6 +3,8 @@ go
 
 use QLDienThoai
 
+SELECT * from HinhSP
+
 
 -------------------TẠO BẢNG-----------------
 --Admin
@@ -12,6 +14,8 @@ CREATE TABLE Admin
 	MKAdmin nvarchar(8) NOT NULL,
 	ChucVu nvarchar(20) NOT NULL,
 )
+insert into Admin
+values ('09876543211','123',N'Nhân Viên')
 GO
 --ThuongHieu
 CREATE TABLE ThuongHieu
@@ -26,9 +30,10 @@ CREATE TABLE SanPham
 	MaSP char(4) primary key,
 	TenSP nvarchar(50) NOT NULL,
 	MaTH char(2) not null  foreign key (MaTH) references ThuongHieu(MaTH) ,
-	MoTaSP NTEXT not null,
+	MoTaSP  nvarchar (1000),
 
 )
+
 GO
 
 --HinhSP
@@ -84,19 +89,18 @@ CREATE TABLE KhachHang
 	TenKH nvarchar(50) NOT NULL,
 	SDT varchar(10) ,
 	DiaChi nvarchar(100),
-	GioiTinh nvarchar(3) check (GioiTinh in('Nam',N'Nữ')),
+	GioiTinh nvarchar(3) check (GioiTinh in('Nam',N'Nữ')) ,
 	NgaySinh  SMALLDATETIME,
 	MK varchar(8),
 	Email varchar(50),
 	MaLoaiKH char(5) foreign key (MaLoaiKH) REFERENCES LoaiKH(MaLoaiKH),
 )
-GO
 
---DonHang
+GO
 CREATE TABLE DonHang
 (
 	MaDH CHAR(4) primary key,
-	MaKH char(4) ,
+	MaKH char(4) NULL foreign key (MaKH) REFERENCES KhachHang(MaKH),
 	TenNguoiNhan nvarchar(50) NOT NULL,
 	SDTnhan char(10)  NOT NULL,
 	DiaChiNhan nvarchar(100)  NOT NULL,
@@ -115,12 +119,14 @@ CREATE TABLE ChiTietDH
 (
 	MaCTDH char(7) PRIMARY KEY,
 	SoLuong int check(Soluong>0),
+	GiaMua int ,
 	Thanhtien int ,
 	MaCTSP char (7) foreign key (MaCTSP) references ChiTietSP(MaCTSP),
 	MaDH CHAR(4) foreign key (MaDH) references DonHang(MaDH),
 	
 )
 
+GO
 GO
 --TSKTSP--
 CREATE TABLE TSKTSP
@@ -182,7 +188,22 @@ create table BinhLuan
 	TrangThai bit,
 	ThoiGian datetime
 )
-select * from HinhSP where MaSP='IP05'
+
+create table PhieuGiamGia(
+	MaGG int identity (1,1) primary key,
+	TenGiamGia nvarchar (30) not null,
+	chietkhau dec(4,3) 
+)
+create table GiamGiaSP
+(
+	MaGGSP int identity primary key,
+	MaSP char(4) not null foreign key(MaSP) references SanPham(MaSP),
+	MaGG int not null foreign key(MaGG) references PhieuGiamGia(MaGG),
+)
+  
+
+
+
 ----KyThuat--
 --CREATE TABLE KyThuat
 --(
@@ -329,7 +350,7 @@ values ('HW09','Huawei P40','HW',N'Điện thoại Huawei P40 – Ba camera ch�
 Huawei P40 và P40 Pro là một mẫu flagship mới của nhà Huawei và luôn bắt kịp với xu hướng hiện đại, P40 cũng được trang bị hệ thống 4 camera đỉnh cao, hiệu năng mạnh mẽ đáp ứng mọi nhu cầu sử dụng. Bên cạnh đó, máy còn sở hữu thiết kế cao cấp, quyến rũ với màn hình đục lỗ mới nhất cùng chất liệu kim loại và kính sang trọng, tạo nên một smartphone tuyệt đẹp. Ngoài ra, bạn cũng có thể tham khảo thêm điện thoại Huawei P40 Pro với cấu hình, camera chất lượng hơn.')
 
 insert into SanPham(MaSP,TenSP,MaTH,MoTaSP)
-values ('HW10','Huawei P40 PRO','HW','Điện thoại Huawei P40 Pro - Smartphone cao cấp với camera siêu nét
+values ('HW10','Huawei P40 PRO','HW',N'Điện thoại Huawei P40 Pro - Smartphone cao cấp với camera siêu nét
 Thời gian gần đây, gã khổng lồ nổi tiếng đến từ Trung Quốc Huawei luôn "khuấy đảo" thị trường smartphone với những thiết bị flagship cao cấp cùng cấu hình ấn tượng. Và một trong những chiếc flagship được hãng cho ra mắt trong năm 2020 đó là Huawei P40 Pro và Huawei P40. Trong đó, P40 Pro là smartphone sở hữu màn hình cong lớn, vi xử lý mạnh mẽ cùng camera có độ phân giải siêu nét. Ngoài ra, khách hàng có thể tham khảo điện thoại Huawei P50 Pro với nhiều nâng cấp về camera.')
 
 insert into SanPham(MaSP,TenSP,MaTH,MoTaSP)

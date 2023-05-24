@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -129,75 +128,86 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\PhieuGiamGiasController.cs" />
     <Compile Include="Controllers\PhoneStoreController.cs" />
+    <Compile Include="Controllers\QuanLyHinhSPsController.cs" />
+    <Compile Include="Controllers\QuanLyKhachHangController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\QuanLyTSKTSPController.cs" />
+    <Compile Include="Controllers\SanPham1Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BinhLuan.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookStore.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStore.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookStore.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookStore.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookStore.edmx</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDH.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHangView.cs" />
     <Compile Include="Models\ChiTietSP.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTSPView.cs" />
     <Compile Include="Models\DetailsView.cs" />
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DungLuong.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GiamGiaSP.cs">
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhSP.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemDonHang.cs" />
     <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiKH.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MatHangMua.cs" />
     <Compile Include="Models\Mau.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhieuGiamGia.cs">
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhoneStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhoneStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhoneStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThuongHieu.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TSKTSP.cs">
-      <DependentUpon>BookStore.tt</DependentUpon>
+      <DependentUpon>PhoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -224,11 +234,16 @@
     <Content Include="Content\Image.css" />
     <Content Include="Content\lichsumuahang.css" />
     <Content Include="Content\mystyle.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\structure.css" />
+    <Content Include="Content\style01.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\dola.png" />
+    <Content Include="Images\face.png" />
+    <Content Include="Images\fb.png" />
     <Content Include="Images\giohang1.png" />
     <Content Include="Images\home-image.png" />
     <Content Include="Images\iphoneslide.jpg" />
@@ -462,17 +477,18 @@
     <Content Include="Images\slideshow-3.jpg" />
     <Content Include="Images\tien.jpg" />
     <Content Include="Images\user.png" />
+    <Content Include="Images\user_temp.jpg" />
     <Content Include="Images\xe.png" />
     <Content Include="Images\xe1.png" />
-    <Content Include="Models\BookStore.Context.tt">
+    <Content Include="Models\PhoneStore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStore.edmx</DependentUpon>
-      <LastGenOutput>BookStore.Context.cs</LastGenOutput>
+      <DependentUpon>PhoneStore.edmx</DependentUpon>
+      <LastGenOutput>PhoneStore.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BookStore.tt">
+    <Content Include="Models\PhoneStore.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookStore.edmx</DependentUpon>
-      <LastGenOutput>BookStore.cs</LastGenOutput>
+      <DependentUpon>PhoneStore.edmx</DependentUpon>
+      <LastGenOutput>PhoneStore.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -485,12 +501,12 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="Models\BookStore.edmx">
+    <EntityDeploy Include="Models\PhoneStore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookStore.Designer.cs</LastGenOutput>
+      <LastGenOutput>PhoneStore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BookStore.edmx.diagram">
-      <DependentUpon>BookStore.edmx</DependentUpon>
+    <Content Include="Models\PhoneStore.edmx.diagram">
+      <DependentUpon>PhoneStore.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -541,6 +557,42 @@
     <Content Include="Views\PhoneStore\CamOn.cshtml" />
     <Content Include="Views\NguoiDung\XacNhanHuyDon.cshtml" />
     <Content Include="Views\PhoneStore\BinhLuanKH.cshtml" />
+    <Content Include="Views\PhieuGiamGias\Create.cshtml" />
+    <Content Include="Views\PhieuGiamGias\Delete.cshtml" />
+    <Content Include="Views\PhieuGiamGias\Details.cshtml" />
+    <Content Include="Views\PhieuGiamGias\Edit.cshtml" />
+    <Content Include="Views\PhieuGiamGias\Index.cshtml" />
+    <Content Include="Views\PhieuGiamGias\dsSPApDung.cshtml" />
+    <Content Include="Views\PhieuGiamGias\dsSPChuaApDung.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\QuanLyDonHang\Create.cshtml" />
+    <Content Include="Views\QuanLyDonHang\Details.cshtml" />
+    <Content Include="Views\QuanLyDonHang\Edit.cshtml" />
+    <Content Include="Views\QuanLyDonHang\Index.cshtml" />
+    <Content Include="Views\QuanLyHinhSPs\Create.cshtml" />
+    <Content Include="Views\QuanLyHinhSPs\Delete.cshtml" />
+    <Content Include="Views\QuanLyHinhSPs\Edit.cshtml" />
+    <Content Include="Views\QuanLyHinhSPs\Index.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Create.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Delete.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Details.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Edit.cshtml" />
+    <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\Create.cshtml" />
+    <Content Include="Views\QuanLySanPham\Delete.cshtml" />
+    <Content Include="Views\QuanLySanPham\Details.cshtml" />
+    <Content Include="Views\QuanLySanPham\Edit.cshtml" />
+    <Content Include="Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Views\QuanLyTSKTSP\Create.cshtml" />
+    <Content Include="Views\QuanLyTSKTSP\Delete.cshtml" />
+    <Content Include="Views\QuanLyTSKTSP\Details.cshtml" />
+    <Content Include="Views\QuanLyTSKTSP\Edit.cshtml" />
+    <Content Include="Views\QuanLyTSKTSP\Index.cshtml" />
+    <Content Include="Views\SanPham1\Create.cshtml" />
+    <Content Include="Views\SanPham1\Delete.cshtml" />
+    <Content Include="Views\SanPham1\Details.cshtml" />
+    <Content Include="Views\SanPham1\Edit.cshtml" />
+    <Content Include="Views\SanPham1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -609,10 +661,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

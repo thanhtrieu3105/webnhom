@@ -27,7 +27,8 @@ namespace Web_dienthoai.Controllers
                 var MyView = new ProductView()
                 {
                     SanPham = item,
-                    HinhSP = hinhSP
+                    HinhSP = hinhSP,
+                    ChiTietSP=db.ChiTietSP.FirstOrDefault(s=>s.MaSP==item.MaSP)
                 };
                 Pview.Add(MyView);
             }
@@ -57,7 +58,8 @@ namespace Web_dienthoai.Controllers
                 {
                     SanPham = item,
                     HinhSP = hinhSP,
-                    ThuongHieu = brand
+                    ThuongHieu = brand,
+                    ChiTietSP = db.ChiTietSP.FirstOrDefault(s => s.MaSP == item.MaSP)
                 };
 
                 listsp.Add(myview);
@@ -111,6 +113,8 @@ namespace Web_dienthoai.Controllers
             ViewBag.hinhsp = hinh;
             ViewBag.tensp = sanpham.TenSP;
             ViewBag.masp = sanpham.MaSP;
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh != null) ViewBag.sty = "display:none";
             return View();
         }
         [HttpPost]
@@ -119,6 +123,20 @@ namespace Web_dienthoai.Controllers
         {
             if (ModelState.IsValid)
             {
+                var khach = Session["KhachHang"] as KhachHang;
+                if (string.IsNullOrEmpty(bl.Chiase))
+                    ModelState.AddModelError(string.Empty, "Xin đóng góp ý kiến của bạn");
+                if ((string.IsNullOrEmpty(bl.SDT) ||string.IsNullOrEmpty(bl.HoTen)) && khach==null)
+                    ModelState.AddModelError(string.Empty, "Họ tên hoặc Số điện thoại không được để trống");
+                if (khach != null)
+                {
+
+                    bl.MaKH = khach.MaKH;
+                    bl.SDT = khach.SDT;
+                    bl.HoTen = khach.TenKH;
+
+                }
+
                 if (Anh != null)
                 {
                     //Lấy tên file của hình được up lên
@@ -135,20 +153,27 @@ namespace Web_dienthoai.Controllers
                     Anh.SaveAs(path);
 
                 }
-                var kh = Session["TaiKhoan"] as KhachHang;
-                if (kh != null)
+                else bl.Anh = "display:none";
+                if (ModelState.IsValid)
                 {
-                    bl.MaKH = kh.MaKH;
-
+                    bl.TrangThai = true;
+                    bl.ThoiGian = DateTime.Now;
+                    bl.MaSP = Session["spdangxem"].ToString();
+                    db.BinhLuan.Add(bl);
+                    db.SaveChanges();
+                    return RedirectToAction("CamOn");
                 }
-                bl.TrangThai = true;
-                bl.ThoiGian = DateTime.Now;
-                bl.MaSP = Session["spdangxem"].ToString();
-                db.BinhLuan.Add(bl);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
+            }
+            var masp = Session["spdangxem"].ToString();
+            HinhSP hinhsp = db.HinhSP.FirstOrDefault(s => s.MaSP == masp);
+            string hinh = hinhsp.MaHinh.ToString();
+            var sanpham = db.SanPham.FirstOrDefault(s => s.MaSP == masp);
+            ViewBag.hinhsp = hinh;
+            ViewBag.tensp = sanpham.TenSP;
+            ViewBag.masp = sanpham.MaSP;
+            var kh = Session["KhachHang"] as KhachHang;
+            if (kh != null) ViewBag.sty = "display:none";
             return View();
         }
         public ActionResult CamOn()

@@ -1,8 +1,8 @@
-﻿:root{
-    --main-bg-color: ;
-    --nav-color: ;
-    --footer-color: ;
-    --card-color: ;
+﻿:root {
+    --main-bg-color:;
+    --nav-color:;
+    --footer-color:;
+    --card-color:;
     --
 }
 
@@ -19,7 +19,7 @@ body {
     height: 350px;
     width: 300px;
     text-align: center;
-    background:#ff6a00;
+    background: #ff6a00;
 }
 
 .size-img {
@@ -33,7 +33,7 @@ body {
     height: 120px;
     width: auto;
     background-color: floralwhite;
-    margin:auto;
+    margin: auto;
 }
 
 .margin-des {
@@ -46,14 +46,13 @@ body {
     margin-top: 20px;
 }
 
-h3{
-    text-align:center;
+h3 {
+    text-align: center;
 }
 
-.more{
-    text-align:center;
+.more {
+    text-align: center;
     margin-top: 20px;
-    text-decoration:none;
+    text-decoration: none;
     font-size: 1.5em;
 }
-

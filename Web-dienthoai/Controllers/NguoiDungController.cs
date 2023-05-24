@@ -110,7 +110,7 @@ namespace Web_dienthoai.Controllers
                         return RedirectToAction("Index", "PhoneStore");
                     }
                     else
-                        ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không hợp lệ!";
+                        ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không hợp lệ !";
                 }
             }
             return View();

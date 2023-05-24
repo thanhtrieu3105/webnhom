@@ -16,6 +16,7 @@ namespace Web_dienthoai.Models
     {
         public string MaCTDH { get; set; }
         public Nullable<int> SoLuong { get; set; }
+        public Nullable<int> GiaMua { get; set; }
         public Nullable<int> Thanhtien { get; set; }
         public string MaCTSP { get; set; }
         public string MaDH { get; set; }

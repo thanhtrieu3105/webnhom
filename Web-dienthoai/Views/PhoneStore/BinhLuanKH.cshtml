@@ -13,14 +13,14 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal white-text w-50" style="margin:0px auto">
-        <h5>Đánh giá</h5><hr />
-        <div class="white-text" style="display: flex; flex-direction: row;align-items:center">
+    <div class="form-horizontal w-50" style="margin:10px auto">
+        <h3 style="text-align:center;font-weight:bold">Đánh giá</h3>
+        <div style="display: flex; flex-direction: row;align-items:center">
             <div class="div-left" style="width:15% ;text-align:center">
                 <img class="mw-100" src="~/Images/Phones/@ViewBag.hinhsp" alt="Lỗi Hình">
             </div>
             <div class="div-right " style="width:35%;margin-left:10px">
-                <h5 class="white-text fw-bold">@ViewBag.tensp</h5>
+                <h5 class=" fw-bold">@ViewBag.tensp  </h5>
             </div>
 
         </div>
@@ -30,15 +30,15 @@
         <div class="mb-3">
             <textarea class="form-control" name="Chiase" id="Chiase" rows="3" placeholder="Chia sẻ cảm nhận của bạn"></textarea>
         </div>
-        <div class="mb-3 white-text">
+        <div class="mb-3 ">
             @*<input type="file" id="Anh" name="Anh" aria-label="gửi ảnh thực tế">*@
             <input type="file" name="Anh" />
             @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
 
         </div>
-        <div class="mb-3 row">
+        <div class="mb-3 row" style="@ViewBag.sty">
             <div class="col-md-6">
-                <label >Họ tên:</label>
+                <label>Họ tên:</label>
                 @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
 
@@ -50,10 +50,10 @@
             </div>
         </div>
 
-        <p class="white-text">Chúng tôi cam kết sẽ bảo mật số điện thoại của bạn</p>
+        <p >Chúng tôi cam kết sẽ bảo mật số điện thoại của bạn</p>
 
-        <div>
-            <button type="submit" class="btn btn-primary align-content-center">Gửi đánh giá</button>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-warning align-content-center">Gửi đánh giá</button>
         </div>
     </div>
 }

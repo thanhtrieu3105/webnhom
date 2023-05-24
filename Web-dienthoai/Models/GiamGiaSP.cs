@@ -12,12 +12,13 @@ namespace Web_dienthoai.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class GiamGiaSP
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int MaGGSP { get; set; }
+        public string MaSP { get; set; }
+        public int MaGG { get; set; }
+    
+        public virtual PhieuGiamGia PhieuGiamGia { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

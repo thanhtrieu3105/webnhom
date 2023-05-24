@@ -1,0 +1,58 @@
+﻿@model Web_dienthoai.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 70%;">
+    <h3 style="text-align:center;color:white">
+        BẠN CÓ CHẮC CHẮN MUỐN XÓA SẢN PHẨM
+        NÀY?
+    </h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal" style="color:white">
+            <dt>
+                MÃ SẢN PHẨM
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaSP)
+            </dd>
+
+            <dt>
+                TÊN SẢN PHẨM
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenSP)
+            </dd>
+
+            <dt>
+                MÃ THƯƠNG HIỆU
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaTH)
+            </dd>
+
+            <dt>
+                MÔ TẢ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MoTaSP)
+            </dd>
+
+        </dl>
+
+       
+          
+            <div class="form-actions">
+               @Html.ActionLink("Xoa","XoaSP", "QuanLySanPham",new { id=Model.MaSP})|
+                @Html.ActionLink("Trở về", "Index", "QuanLySanPham")
+            </div>
+        
+    </div>
+</div>

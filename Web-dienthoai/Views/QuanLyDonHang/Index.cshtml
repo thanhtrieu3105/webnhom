@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Web_dienthoai.Models.DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 10px;">
+    <h2 style="text-align: center;">QUẢN LÝ ĐƠN HÀNG</h2>
+
+    <p>
+        @Html.ActionLink("Tạo Mới", "QuanLyDonHang")
+    </p>
+    <table class="table table-striped  table-hover ">
+        <thead>
+            <tr>
+                <th style="width:200px">
+                    MÃ ĐƠN
+                </th>
+                <th style="width:250px">
+                    MÃ KHÁCH
+                </th>
+                <th style="width:300px">
+                    NGƯỜI NHẬN
+                </th>
+                <th style="width:300px">
+                    SĐT
+                </th>
+                <th style="width:300px">
+                    ĐỊA CHỈ
+                </th>
+                <th style="width:300px">
+                    TÌNH TRẠNG
+                </th>
+                <th style="width:300px">
+                    NGÀY MUA
+                </th>
+                <th style="width:300px">
+                    THANH TOÁN
+                </th>
+                <th style="width:300px">
+                    GIAO HÀNG
+                </th>
+                <th style="width:300px">
+                    TỔNG TIỀN
+                </th>
+                <th style="width:400px">
+
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaDH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDTnhan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChiNhan)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TinhTrang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayDH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HTThanhToan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HTGiaohang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TongTien)
+                    </td>
+                    <td>
+                        <br />
+                        @Html.ActionLink("chỉnh", "Edit", "QuanLyDonHang", new { id = item.MaDH }) |
+                        @Html.ActionLink("Xem", "Details", "QuanLyDonHang", new { id = item.MaDH }) <br />
+                  
+
+                        @Html.ActionLink("Xác nhận ", "XacNhanDonHang", new { id = item.MaDH })
+                        <br />
+ 
+                        @Html.ActionLink("Hủy", "HuyDonHang", new { id = item.MaDH })
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+    </table>
+    </div>

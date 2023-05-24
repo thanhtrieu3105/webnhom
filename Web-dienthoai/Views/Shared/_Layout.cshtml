@@ -8,49 +8,55 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Digital Way", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Cart", "Cart", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+    <header  style="background-color: #D4FAFC; ">
+        @*Logo*@
+        <div class="head">
+            <div class="logo">
+                <a href="@Url.Action("Index", "QuanLySanPham")"> <img src="~/Images/home-image.png" /></a>
+                <a href="@Url.Action("Index", "QuanLySanPham")" style="text-decoration:none;color:black">QUẢN LÝ SẢN PHẨM |</a>
+                <a href="@Url.Action("Index", "QuanLyDonHang")" style="text-decoration:none;color:black">QUẢN LÝ ĐƠN HÀNG |</a>
+                <a href="@Url.Action("Index", "QuanLyKhachHang")" style="text-decoration:none;color:black">QUẢN LÝ KHÁCH HÀNG|</a>
+                <a href="@Url.Action("Index", "PhieuGiamGias")" style="text-decoration:none;color:black">QUẢN LÝ PHIẾU GIẢM GIÁ</a>
             </div>
-            <div class="row height d-flex justify-content-center align-items-center">
 
-                <div class="col-md-8">
 
-                    <div class="search">
-                        <i class="fa fa-search"></i>
-                        <input type="text" class="form-control" placeholder="Have a question? Ask Now">
-                        <button class="btn btn-primary">Search</button>
-                    </div>
+            @*   <div class="search-cart">
+                <div class="search-sp">
+                    <i class="fa fa-search"></i>
+                </div>*@
 
-                </div>
 
-            </div>
         </div>
 
-    </nav>
 
-    <div class="container body-content">
+        <form class="form-search " onsubmit="return false;" style="display:none;">
+            <div class="click-search">
+                <i class="search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm" />
+                <i class="delSearch"></i>
+            </div>
+            <button type="submit" class="submit-search" style="display:none"></button>
+            <div class="sg-search"></div>
+        </form>
+
+
+
+    </header>
+
+
+    @*Image slideshow*@
+    <div id="div-main">
+
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @*<div id="div-footer">
+            Footer
+        </div>
+
+    *@
 
 
-    <footer></footer>
 </body>
 
 </html>

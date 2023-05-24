@@ -42,41 +42,51 @@
 @*Iphone*@
 
 <br />
-<h3 class="align: text-center" style="color: white; font-weight: bold;margin-bottom:30px">@ViewBag.HangDT</h3>
+
+<h3 class="align: text-center" style="font-weight: bold;">@ViewBag.HangDT</h3>
+<br />
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var item in Model)
     {
         <div class="col">
-            <div class="card">
+            <div class="card cardt">
                 <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })">
                     <img class="card-img-top my-image" src="~/Images/Phones/@item.HinhSP.MaHinh" alt="Card image">
                 </a>
                 <div class="card-body">
-                    <h4 class="card-title">@item.SanPham.TenSP</h4>
-                    <p class="card-text">@item.SanPham.MaSP</p>
+                    @*<h4 class="card-title">@item.SanPham.TenSP</h4>
+        <p class="card-text">@item.SanPham.MaSP</p>*@
+                    <h4 class="card-title cardt-title" style="text-align: center;">@item.SanPham.TenSP</h4>
+                    <p class="card-text" style="text-align: center; color: red; font-weight: bold">@String.Format("{0:0,0}", @item.ChiTietSP.Gia) vnđ</p>
+                    <div style=" display: flex; justify-content: center;">  <a href="@Url.Action("Details", "PhoneStore", new { id = item.SanPham.MaSP })" class="btn btn-primary">Mua ngay</a> </div>
+
                 </div>
             </div>
         </div>
     }
 </div>
-<script>
-    let slideIndex = 0;
-    showSlides();
 
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-</script>
+    </script>

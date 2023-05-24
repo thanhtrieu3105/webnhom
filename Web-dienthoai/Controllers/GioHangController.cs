@@ -158,7 +158,9 @@ namespace Web_dienthoai.Controllers
             }
             if (dh.HTGiaohang == "Giao hàng tiêu chuẩn") dh.TongTien += 30000;
             else dh.TongTien += 66000;
-             db.DonHang.Add(dh);//luu don hang vao database
+//AP DUNG PROC LUU DON HANG
+            db.ThemDH(dh.MaDH,dh.MaKH,dh.TenNguoiNhan,dh.SDTnhan,dh.DiaChiNhan,dh.TriGia,dh.HTThanhToan,dh.HTGiaohang,dh.TongTien);
+          //   db.DonHang.Add(dh);//luu don hang vao database
             db.SaveChanges(); //luu truoc khi tạo chi tiết don hàng để có mã đơn hàng trong database
 
             DonHang dh1 = LayTTDon(); //lay thong tin don trong sesion neu co
@@ -167,17 +169,20 @@ namespace Web_dienthoai.Controllers
 
 
             //them chi tiet don hang vao database
-            ChiTietDH ctdh;
+            //ChiTietDH ctdh;
             List<MatHangMua> giohang = LayGioHang();
             foreach (var item in giohang)
             {
-                ctdh = new ChiTietDH();
-                ctdh.MaCTDH = TaoMa("ctdh");//tạo tự động mã mới không trùng trong database
-                ctdh.SoLuong = item.SoLuong;
-                ctdh.Thanhtien = ((int)item.ThanhTien());
-                ctdh.MaCTSP = item.MaCTSP;
-                ctdh.MaDH = dh.MaDH;
-                db.ChiTietDH.Add(ctdh);
+                //ctdh = new ChiTietDH();
+                //ctdh.MaCTDH = TaoMa("ctdh");//tạo tự động mã mới không trùng trong database
+                //ctdh.SoLuong = item.SoLuong;
+                //ctdh.Thanhtien = ((int)item.ThanhTien());
+                //ctdh.MaCTSP = item.MaCTSP;
+                //ctdh.MaDH = dh.MaDH;
+                //ctdh.GiaMua = ((int)item.DonGia);
+                //db.ChiTietDH.Add(ctdh);
+//AP DUNG PROC LUU CHI TIET DON HANG
+                db.ThemCTDH(TaoMa("ctdh"), item.SoLuong, ((int)item.DonGia), item.MaCTSP, dh.MaDH, ((int)item.ThanhTien()));
                 db.SaveChanges();
             }
            
@@ -202,27 +207,40 @@ namespace Web_dienthoai.Controllers
         }
         public string TaoMa(string bien)
         {
-            int ma = 10;
+            int ma = 1000;
             if (bien == "mdh")
             {
 
-                string madh = "DH" + ma.ToString();
+                string madh = ma.ToString();
                 //kiem tra ton tai ma don hang
                 while (db.DonHang.FirstOrDefault(s => s.MaDH == madh) != null)
                 {
                     ma++;
-                    madh = "DH" + ma.ToString();
+                    madh =  ma.ToString();
                 }
                 return madh;
             }
+            if (bien == "mkh")
+            {
+
+                string makh =  ma.ToString();
+                //kiem tra ton tai ma don hang
+                while (db.KhachHang.FirstOrDefault(s => s.MaKH == makh) != null)
+                {
+                    ma++;
+                    makh =  ma.ToString();
+                }
+                return makh;
+            }
             if (bien == "ctdh")
             {
-                string madh = "CTDH" + ma.ToString();
+                ma = 100000;
+                string madh =  ma.ToString();
                 //kiem tra ton tai ma don hang
                 while (db.ChiTietDH.FirstOrDefault(s => s.MaCTDH == madh) != null)
                 {
                     ma++;
-                    madh = "CTDH" + ma.ToString();
+                    madh =  ma.ToString();
                    
                 }
                 return madh;
@@ -268,22 +286,28 @@ namespace Web_dienthoai.Controllers
             }
             else
             {
-              
-                var tk = new KhachHang();
-                tk.TenKH = dh.TenNguoiNhan;
-                tk.SDT = dh.SDTnhan;
-                tk.DiaChi = dh.DiaChiNhan;
-                tk.MK = dh.SDTnhan;
-                tk.MaLoaiKH = "LKH01";
-                db.KhachHang.Add(tk);
+                 Random rd = new Random();
+                string mk = rd.Next(12547653,95678456).ToString();
+                //var tk = new KhachHang();
+                //tk.MaKH = TaoMa("mkh");
+                //tk.TenKH = dh.TenNguoiNhan;
+                //tk.SDT = dh.SDTnhan;
+                //tk.DiaChi = dh.DiaChiNhan;
+                //tk.MK = mk;
+                //tk.MaLoaiKH = "LKH01";
+                //db.KhachHang.Add(tk);
+//ap dung PROC TAO TAI KHOAN
+          
+                db.ThemKH(TaoMa("mkh"), dh.TenNguoiNhan, dh.SDTnhan, dh.DiaChiNhan,"Nam",DateTime.Now, mk, "");
                 db.SaveChanges();
-                ViewBag.TenDN = tk.SDT;
-                ViewBag.MK = tk.MK;
-                ViewBag.TENKH = tk.TenKH;
-                ViewBag.DIACHI = tk.DiaChi;
+           
+                ViewBag.TenDN = dh.SDTnhan;
+                ViewBag.MK = mk;
+                ViewBag.TENKH = dh.TenNguoiNhan;
+                ViewBag.DIACHI = dh.DiaChiNhan;
                 ViewBag.thongbao = "Đơn hàng đã được lưu vào tài khoản";
                 //gan ma khachhang vao don hang vua mua
-                var a = db.KhachHang.FirstOrDefault(s => s.SDT == tk.SDT);
+                var a = db.KhachHang.FirstOrDefault(s => s.SDT == dh.SDTnhan);
                 var donhang = db.DonHang.FirstOrDefault(s => s.MaDH == dh.MaDH);
                 donhang.MaKH = a.MaKH;
                 db.SaveChanges();

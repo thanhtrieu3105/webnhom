@@ -14,12 +14,13 @@ namespace Web_dienthoai.Models
         public string TenSP { get; set; }
 
         public string HinhSP { get; set; }
+        public string tengiamgia { get; set; }
 
         public int? DonGia { get; set; }
 
         public int? SoLuong { get; set; }
 
-        public int? ThanhTien { get; set; }
+        public double ThanhTien { get; set; }
         public CTSPView(string MaCTSP, int? sl)
         {
             this.MaCTSP = MaCTSP;
@@ -31,7 +32,20 @@ namespace Web_dienthoai.Models
             this.HinhSP = db.HinhSP.FirstOrDefault(s => s.MaSP == SP.MaSP).MaHinh;
             this.DonGia = CTSP.Gia;
             this.SoLuong = sl ;
-            this.ThanhTien = this.SoLuong * this.DonGia;
+            var giamgiasp = db.GiamGiaSP.FirstOrDefault(s => s.MaSP == MaSP);
+          
+            if (giamgiasp == null)
+            {
+                this.ThanhTien = Convert.ToDouble( this.SoLuong * this.DonGia);
+                this.tengiamgia = "";
+            }
+            else
+            {
+                  var magg = giamgiasp.MaGG;
+                var chietkhau = (double)db.PhieuGiamGia.FirstOrDefault(s => s.MaGG == magg).chietkhau;
+                this.ThanhTien = Convert.ToDouble(this.SoLuong * this.DonGia-(this.SoLuong * this.DonGia*chietkhau));
+                this.tengiamgia = db.PhieuGiamGia.FirstOrDefault(s => s.MaGG == magg).TenGiamGia;
+            }
         }
     }
 }

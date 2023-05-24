@@ -19,6 +19,7 @@ namespace Web_dienthoai.Models
         {
             this.BinhLuan = new HashSet<BinhLuan>();
             this.ChiTietSP = new HashSet<ChiTietSP>();
+            this.GiamGiaSP = new HashSet<GiamGiaSP>();
             this.HinhSP = new HashSet<HinhSP>();
             this.TSKTSP = new HashSet<TSKTSP>();
         }
@@ -32,6 +33,8 @@ namespace Web_dienthoai.Models
         public virtual ICollection<BinhLuan> BinhLuan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSP> ChiTietSP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiamGiaSP> GiamGiaSP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HinhSP> HinhSP { get; set; }
         public virtual ThuongHieu ThuongHieu { get; set; }
